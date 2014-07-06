@@ -1,7 +1,8 @@
 //----------------------------------------------------------
 //
-//  GRAND LARCENY  1.0
-//  A freeroam gamemode for SA-MP 0.3
+//  KK Gamemode  1.0
+//  A freeroam gamemode for SA-MP 0.3 Coded by khalifakk
+//  Thanks to SAMP team
 //
 //----------------------------------------------------------
 
@@ -42,7 +43,7 @@ new lastanimid=0;
 main()
 {
 	print("\n---------------------------------------");
-	print("Running Grand Larceny - by the SA-MP team\n");
+	print("Running KK Gamemode - by khalifakk and SAMP Team\n");
 	print("---------------------------------------\n");
 }
 
@@ -50,9 +51,9 @@ main()
 
 public OnPlayerConnect(playerid)
 {
-	GameTextForPlayer(playerid,"~w~Grand Larceny",3000,4);
-  	SendClientMessage(playerid,COLOR_WHITE,"Welcome to {88AA88}G{FFFFFF}rand {88AA88}L{FFFFFF}arceny");
-  	
+	GameTextForPlayer(playerid,"~w~KK Gamemode!",3000,4);
+  	SendClientMessage(playerid,COLOR_WHITE,"Welcome to {88AA88}S{FFFFFF}erver {88AA88}N{FFFFFF}ame !");
+
   	// class selection init vars
   	gPlayerCitySelection[playerid] = -1;
 	gPlayerHasCitySelected[playerid] = 0;
@@ -90,7 +91,7 @@ public OnPlayerSpawn(playerid)
 	SetPlayerInterior(playerid,0);
 	TogglePlayerClock(playerid,0);
  	ResetPlayerMoney(playerid);
-	GivePlayerMoney(playerid, 30000);
+	GivePlayerMoney(playerid, 50000);
 
 	if(CITY_LOS_SANTOS == gPlayerCitySelection[playerid]) {
  	    randSpawn = random(sizeof(gRandomSpawns_LosSantos));
@@ -348,7 +349,7 @@ public OnPlayerRequestClass(playerid, classid)
 
 public OnGameModeInit()
 {
-	SetGameModeText("Grand Larceny");
+	SetGameModeText("KK Gamemode");
 	ShowPlayerMarkers(PLAYER_MARKERS_MODE_GLOBAL);
 	ShowNameTags(1);
 	SetNameTagDrawDistance(40.0);
