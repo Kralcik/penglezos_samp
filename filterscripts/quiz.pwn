@@ -8,7 +8,7 @@ new isenable, answer, number[4];
 
 public OnFilterScriptInit()
 {
-  SetTimer("mathquiez",80000, true);
+  SetTimer("mathQuiz",80000, true);
   return 1;
 }
 
@@ -20,7 +20,7 @@ public OnPlayerText(playerid,text[])
       new CName[24];
 	  GetPlayerName(playerid, CName, 24);
       isenable = false;
-      format(string, sizeof(string),"%s answered the right answer of math quiez which was "COL_RED"%d "COL_WHITE"and wons 3 Scores, 1000$ Cash",CName,answer);
+      format(string, sizeof(string),"%s answered the right answer of math Quiz which was "COL_RED"%d "COL_WHITE"and wons 3 Scores, 1000$ Cash",CName,answer);
       SendClientMessageToAll(-1, string);
       SetPlayerScore(playerid, GetPlayerScore(playerid)+3);
       GivePlayerMoney(playerid, 1000);
@@ -29,8 +29,8 @@ public OnPlayerText(playerid,text[])
    return 1;
 }
 
-forward mathquiez();
-public mathquiez()
+forward mathQuiz();
+public mathQuiz()
 {
 		new string[128];
         if(!isenable)
@@ -72,7 +72,7 @@ public mathquiez()
         else
 		{
                 isenable = false;
-                format(string, sizeof(string),"No one solved the math quiez which was "COL_RED"%d"COL_WHITE", so no one wons 1Score, 10$", answer);
+                format(string, sizeof(string),"No one solved the math Quiz which was "COL_RED"%d"COL_WHITE", so no one wons 1Score, 10$", answer);
                 SendClientMessageToAll(-1, string);
         }
         return 1;
