@@ -8,7 +8,7 @@ new isenable, answer, number[4];
 
 public OnFilterScriptInit()
 {
-  SetTimer("mathQuiz",200000, true);
+  SetTimer("mathQuiz",4000000, true);
   return 1;
 }
 
@@ -40,7 +40,7 @@ public mathQuiz()
                         case 0:
 						{
                                 answer = (number[0]=random(1000)) + (number[1]=random(840));
-                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" + "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" + "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 2000$ Cash",number[0], number[1]);
                         }
                         case 1:
 						{
@@ -49,12 +49,12 @@ public mathQuiz()
  								  answer = (number[0]=random(500)) - (number[1]=random(500));
                                 }
 								while(number[0] < number[1]);
-                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" - "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" - "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 2000$ Cash",number[0], number[1]);
                         }
                         case 2:
 						{
                                 answer = (number[0]=random(100)) * (number[1]=random(80));
-                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" * "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" * "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 2000$ Cash",number[0], number[1]);
                         }
                         case 3:
 						{
@@ -63,7 +63,7 @@ public mathQuiz()
                                         answer = (number[0]=random(1000)+1) / (number[1]=random(600)+1);
                                 }
 								while(number[0] % number[1]);
-                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" / "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" / "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 2000$ Cash",number[0], number[1]);
                         }
                 }
                 SendClientMessageToAll(-1, string);
