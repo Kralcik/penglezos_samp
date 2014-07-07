@@ -8,7 +8,7 @@ new isenable, answer, number[4];
 
 public OnFilterScriptInit()
 {
-  SetTimer("mathQuiz",80000, true);
+  SetTimer("mathQuiz",200000, true);
   return 1;
 }
 
@@ -20,10 +20,10 @@ public OnPlayerText(playerid,text[])
       new CName[24];
 	  GetPlayerName(playerid, CName, 24);
       isenable = false;
-      format(string, sizeof(string),"%s answered the right answer of math Quiz which was "COL_RED"%d "COL_WHITE"and wons 3 Scores, 1000$ Cash",CName,answer);
+      format(string, sizeof(string),"%s answered the right answer of math Quiz which was "COL_RED"%d "COL_WHITE"and wons 3 Scores, 2000$ Cash",CName,answer);
       SendClientMessageToAll(-1, string);
       SetPlayerScore(playerid, GetPlayerScore(playerid)+3);
-      GivePlayerMoney(playerid, 1000);
+      GivePlayerMoney(playerid, 2000);
       return 0;
    }
    return 1;
@@ -40,7 +40,7 @@ public mathQuiz()
                         case 0:
 						{
                                 answer = (number[0]=random(1000)) + (number[1]=random(840));
-                                format(string, sizeof(string),"[Quiz] First one who Solve "COL_GREEN"%d"COL_WHITE" + "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" + "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
                         }
                         case 1:
 						{
@@ -49,12 +49,12 @@ public mathQuiz()
  								  answer = (number[0]=random(500)) - (number[1]=random(500));
                                 }
 								while(number[0] < number[1]);
-                                format(string, sizeof(string),"[Quiz] First one who Solve "COL_GREEN"%d"COL_WHITE" - "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" - "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
                         }
                         case 2:
 						{
                                 answer = (number[0]=random(100)) * (number[1]=random(80));
-                                format(string, sizeof(string),"[Quiz] First one who Solve "COL_GREEN"%d"COL_WHITE" * "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" * "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
                         }
                         case 3:
 						{
@@ -63,7 +63,7 @@ public mathQuiz()
                                         answer = (number[0]=random(1000)+1) / (number[1]=random(600)+1);
                                 }
 								while(number[0] % number[1]);
-                                format(string, sizeof(string),"[Quiz] First one who Solve "COL_GREEN"%d"COL_WHITE" / "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" / "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 1000$ Cash",number[0], number[1]);
                         }
                 }
                 SendClientMessageToAll(-1, string);
