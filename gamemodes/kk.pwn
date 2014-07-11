@@ -163,6 +163,19 @@ public OnPlayerDeath(playerid, killerid, reason)
 
 //----------------------------------------------------------
 
+public OnPlayerCommandText(playerid, cmdtext[])
+{
+	if (strcmp("/cmds", cmdtext, true, 10) == 0)
+	{
+		  SendClientMessage(playerid,-1,"Available commands:");
+            SendClientMessage(playerid,-1,"/lock, /unlock, /purchase, /sellmycar, /callmycar, /eject, /ejectall");
+		return 1;
+	}
+	return SendClientMessage(playerid,-1,"Invalid command! Try /cmds to see the server valid commands!");
+}
+
+//----------------------------------------------------------
+
 ClassSel_SetupCharSelection(playerid)
 {
    	if(gPlayerCitySelection[playerid] == CITY_LOS_SANTOS) {
