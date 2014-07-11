@@ -354,7 +354,6 @@ public OnGameModeInit()
 	ShowNameTags(1);
 	SetNameTagDrawDistance(40.0);
 	EnableStuntBonusForAll(0);
-	DisableInteriorEnterExits();
 	SetWeather(2);
 	SetWorldTime(11);
 
