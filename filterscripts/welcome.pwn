@@ -127,12 +127,13 @@ public OnPlayerText(playerid, text[])
 //==============================================================================
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-	if (strcmp("/mycommand", cmdtext, true, 10) == 0)
+	if (strcmp("/cmds", cmdtext, true, 10) == 0)
 	{
-		// Do something here
+		  SendClientMessage(playerid,-1,"Available commands:");
+            SendClientMessage(playerid,-1,"/lock, /unlock, /purchase, /sellmycar, /callmycar, /eject, /ejectall");
 		return 1;
 	}
-	return 0;
+	return SendClientMessage(playerid,-1,"Invalid command! Try /cmds to see the server valid commands!");
 }
 //==============================================================================
 public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
