@@ -1,6 +1,6 @@
 //----------------------------------------------------------
 //
-//  KK Gamemode  1.0
+//  KK Gamemode  2.0
 //  A freeroam gamemode for SA-MP 0.3 Coded by khalifakk
 //  Thanks to SAMP team
 //
@@ -91,7 +91,7 @@ public OnPlayerSpawn(playerid)
 	SetPlayerInterior(playerid,0);
 	TogglePlayerClock(playerid,0);
  	ResetPlayerMoney(playerid);
-	GivePlayerMoney(playerid, 50000);
+	GivePlayerMoney(playerid, 0);
 
 	if(CITY_LOS_SANTOS == gPlayerCitySelection[playerid]) {
  	    randSpawn = random(sizeof(gRandomSpawns_LosSantos));
