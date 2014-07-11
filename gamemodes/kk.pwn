@@ -90,9 +90,7 @@ public OnPlayerSpawn(playerid)
 	
 	SetPlayerInterior(playerid,0);
 	TogglePlayerClock(playerid,0);
- 	ResetPlayerMoney(playerid);
-	GivePlayerMoney(playerid, 0);
-
+	
 	if(CITY_LOS_SANTOS == gPlayerCitySelection[playerid]) {
  	    randSpawn = random(sizeof(gRandomSpawns_LosSantos));
  	    SetPlayerPos(playerid,
@@ -143,22 +141,20 @@ public OnPlayerSpawn(playerid)
 
 public OnPlayerDeath(playerid, killerid, reason)
 {
-    new playercash;
-    
-    // if they ever return to class selection make them city
-	// select again first
-	gPlayerHasCitySelected[playerid] = 0;
-    
-	if(killerid == INVALID_PLAYER_ID) {
-        ResetPlayerMoney(playerid);
-	} else {
-		playercash = GetPlayerMoney(playerid);
-		if(playercash > 0)  {
-			GivePlayerMoney(killerid, playercash);
-			ResetPlayerMoney(playerid);
-		}
-	}
-   	return 1;
+    if(killerid == INVALID_PLAYER_ID) // Suicide
+    {
+           printf("Player ID: [%d] killed himself.",playerid);
+           GivePlayerMoney(playerid,-500); // Money ammount that player will loose
+   	       SendClientMessage(playerid,COLOR_WHITE,"You just died and 500$!"); // Death Message
+    }
+    else if(killerid != INVALID_PLAYER_ID) // Valid kill
+    {
+           printf("Player ID: [%d] killed Player ID: [%d].",killerid,playerid);
+		   GivePlayerMoney(killerid,500); // Money ammount that the kill will get
+		   SendClientMessage(playerid,COLOR_WHITE,"You killed someone , here is your reward!"); // Reward Message
+    }
+    SendDeathMessage(killerid, playerid, reason); // The kill will also be added to the 'killfeed'
+    return 1;
 }
 
 //----------------------------------------------------------
