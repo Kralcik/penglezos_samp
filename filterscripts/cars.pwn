@@ -57,7 +57,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	if  (strcmp(cmdtext, "/carhelp", true)==0)
             {
             SendClientMessage(playerid, COLOR_GREEN,"Available commands:");
-            SendClientMessage(playerid, COLOR_YELLOW,"/lock, /unlock, /purchase, /sellmycar, /callmycar, /eject, /ejectall");
+            SendClientMessage(playerid, COLOR_YELLOW,"/lock, /unlock, /purchase, /sellmycar, /callmycar, /ejectcar, /ejectcarall");
             return 1;
             }
 
@@ -189,7 +189,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
             }
         }
 
-    if	(strcmp(cmd,"/eject", true)==0){
+    if	(strcmp(cmd,"/ejectcar", true)==0){
 		new vehicleid;
 		new pid;
 		new playerstate = GetPlayerState(playerid);
@@ -207,7 +207,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		vehicleid = GetPlayerVehicleID(playerid);
 		if	(!strlen(tmp))
 			{
-			SendClientMessage(playerid,COLOR_WHITE,"USAGE: /eject [playerid]");
+			SendClientMessage(playerid,COLOR_WHITE,"USAGE: /ejectcar [playerid]");
 			return 1;
 			}
 		pid = strval(tmp);
@@ -228,7 +228,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 			return 1;
 			}
 		}
-    if	(strcmp(cmd,"/ejectall", true)==0){
+    if	(strcmp(cmd,"/ejectcarall", true)==0){
 		new vehicleid;
 		new playerstate = GetPlayerState(playerid);
 		if	(!IsPlayerInAnyVehicle(playerid))
