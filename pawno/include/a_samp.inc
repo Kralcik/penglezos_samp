@@ -1,6 +1,6 @@
 /*  SA-MP Functions
  *
- *  (c) Copyright 2005-2014, SA-MP Team
+ *  (c) Copyright 2005-2012, SA-MP Team
  *
  */
 
@@ -28,7 +28,7 @@
 // Limits and internal constants
 #define MAX_PLAYER_NAME							(24)
 #define MAX_PLAYERS								(500)
-#define MAX_VEHICLES							(2000)
+#define MAX_VEHICLES							(1000)
 #define INVALID_PLAYER_ID						(0xFFFF)
 #define INVALID_VEHICLE_ID						(0xFFFF)
 #define NO_TEAM									(255)
@@ -58,8 +58,7 @@ native SendClientMessage(playerid, color, const message[]);
 native SendClientMessageToAll(color, const message[]);
 native SendPlayerMessageToPlayer(playerid, senderid, const message[]);
 native SendPlayerMessageToAll(senderid, const message[]);
-native SendDeathMessage(killer, killee, weapon);
-native SendDeathMessageToPlayer(playerid, killer, killee, weapon);
+native SendDeathMessage(killer,killee,weapon);
 native GameTextForAll(const string[],time,style);
 native GameTextForPlayer(playerid,const string[],time,style);
 native SetTimer(funcname[], interval, repeating);
@@ -122,8 +121,6 @@ native GetServerVarAsBool(const varname[]);
 native GetPlayerNetworkStats(playerid, retstr[], retstr_size);
 native GetNetworkStats(retstr[], retstr_size);
 native GetPlayerVersion(playerid, const version[], len); // Returns the SA-MP client revision as reported by the player
-native BlockIpAddress(ip_address[], timems);
-native UnBlockIpAddress(ip_address[]);
 
 // Extended admin network stats
 native GetServerTickRate();
@@ -352,7 +349,6 @@ forward OnPlayerGiveDamage(playerid, damagedid, Float:amount, weaponid, bodypart
 forward OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ);
 forward OnPlayerClickTextDraw(playerid, Text:clickedid);
 forward OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid);
-forward OnIncomingConnection(playerid, ip_address[], port);
 
 #define CLICK_SOURCE_SCOREBOARD		0
 forward OnPlayerClickPlayer(playerid, clickedplayerid, source);

@@ -53,19 +53,20 @@ Legal:
 		SA:MP Team past, present and future - SA:MP.
 	
 Version:
-	0.4.1
+	0.4
 Changelog:
-	25/05/12:
-		Added a delay timer to remove players for "Kick" crashes.
+	13/01/12:
+		Fixed the count thanks to AndreT.
 	05/01/12:
 		Fixed multi-dimensional iterators.
 		Fixed "FOREACH_NO_BOTS".
 		Made "Iterator:" support multi-dimensional arrays.
-	07/12/11:
-		Underlying implementation tweak for more consistent code.
-		Added Iter_Contains.
-	06/12/11:
-		Minor fixes.
+	24/12/11:
+		Added _YSI_SPECIAL_DEBUG support.
+		Added fix for function iterators.
+		Ported back to YSI.
+		Changed to use internal YSI "__" natives.
+		Fixed calls order by using ALS.
 	31/10/11:
 		Changed the underlying loop code to be slightly faster.
 		Added support for Iter_SafeRemove, prompting refactoring.
@@ -117,19 +118,23 @@ Functions:
 		Itter_RandomInternal - Get a random item from an itterator.
 		Itter_FreeInternal - Gets the first free slot in the itterator.
 		Itter_InitInternal - Initialises a multi-dimensional itterator.
-		Itter_ContainsInternal - Checks if a value is in an iterator.
 	Static:
 		-
 	Inline:
 		Itter_Create - Create a new itterator value set.
 		Itter_Add - Wraps Itter_AddInternal.
-		Itter_SafeRemove - Wraps Itter_SafeRemoveInternal.
 		Itter_Remove - Wraps Itter_RemoveInternal.
 		Itter_Random - Wraps Itter_RandomInternal.
 		Itter_Count - Gets the number of items in an itterator.
 		Itter_Debug - Wraps around Itter_ShowArray.
 		Itter_Free - Wraps around Itter_FreeInternal.
-		Itter_Contains - Wraps around Itter_ContainsInternal.
+		Itter_Create2 - Create a new itterator array value set.
+		Itter_Add2 - Wraps Itter_AddInternal for arrays.
+		Itter_Remove2 - Wraps Itter_RemoveInternal for arrays.
+		Itter_Random2 - Wraps Itter_RandomInternal for arrays.
+		Itter_Count2 - Gets the number of items in an itterator array.
+		Itter_Debug2 - Wraps around Itter_ShowArray for arrays.
+		Itter_Free2 - Wraps around Itter_FreeInternal for arrays.
 	API:
 		-
 Callbacks:
@@ -172,24 +177,31 @@ Iterators:
 	Character - All players and bots.
 \*----------------------------------------------------------------------------*/
 
-#define _FOREACH_LOCAL_VERSION        15
+// "y_iterate" is always higher than "foreach".
+#define _Y_ITERATE_LOCAL_VERSION        14
 
 // Foreach is testing us.
 #if defined _FOREACH_INC_TEST
-	#define _FOREACH_CUR_VERSION _FOREACH_LOCAL_VERSION
+	#define _FOREACH_CUR_VERSION _Y_ITERATE_LOCAL_VERSION
 	#endinput
 #endif
 #if !defined _FOREACH_NO_TEST
 	#define _FOREACH_INC_TEST
-	#tryinclude <YSI\y_iterate>
+	#tryinclude <foreach>
 	#undef _FOREACH_INC_TEST
 	// <foreach> exists - test which is newer.
-	#if defined _inc_y_iterate
-		#if _FOREACH_CUR_VERSION > _FOREACH_LOCAL_VERSION
+	#if defined _inc_foreach
+		#if !defined _FOREACH_CUR_VERSION
+			// Foreach exists, but it's an old version - don't try use this
+			// system or the variables will conflict.
+			#error "Old foreach.inc files are no longer compatible with YSI."
+			#endinput
+		#endif
+		#if _FOREACH_CUR_VERSION > _Y_ITERATE_LOCAL_VERSION
 			// Foreach is newer.
-			#undef _inc_y_iterate
+			#undef _inc_foreach
 			#define _FOREACH_NO_TEST
-			#include <YSI\y_iterate>
+			#include <foreach>
 			#endinput
 		#endif
 	#endif
@@ -201,6 +213,8 @@ Iterators:
 
 //#include <YSI\y_debug>
 //#include <YSI\y_hooks>
+
+#include <YSI\internal\y_natives>
 
 #if defined SendChat || defined FOREACH_NO_PLAYERS
 	#define BOTSYNC_IS_BOT     (true)
@@ -226,10 +240,6 @@ Iterators:
 #if !defined BOTSYNC_IS_BOT
 	static stock
 		YSI_g_sCallbacks = 0;
-#endif
-
-#if !defined BOTSYNC_IS_BOT
-	forward Itter_OPDCInternal(playerid);
 #endif
 
 /*----------------------------------------------------------------------------*\
@@ -516,7 +526,7 @@ Notes:
 #define Y_FOREACH_FOURTH|||%0=Y_FOREACH_FIFTH|||%1|||%2||| new Y_FOREACH_SIXTH;%0|||Y_FOREACH_SEVENTH|||%2|||
 
 // This is called when there are tags on the "new" declaration.
-#define Y_FOREACH_SEVENTH|||%9Y_FOREACH_SIXTH;%0|||%1|||%2||| new %0:%1=%0:_Y_ITER_ARRAY_SIZE(%2);_:(%1=_Y_ITER_ARRAY:%2@YSII_Ag[%1])!=_Y_ITER_ARRAY_SIZE(%2);
+#define Y_FOREACH_SEVENTH|||%9Y_FOREACH_SIXTH;%0|||%1|||%2||| new %0:%1=%0:_Y_ITER_ARRAY_SIZE(%2);_:(%1=_Y_ITER_ARRAY:%2@YSII_Ag[%1])!=%0:_Y_ITER_ARRAY_SIZE(%2);
 
 // This is called when there aren't.
 #define Y_FOREACH_SIXTH;%0|||Y_FOREACH_SEVENTH|||%2||| %0=_Y_ITER_ARRAY_SIZE(%2);_:(%0=_Y_ITER_ARRAY:%2@YSII_Ag[%0])!=_Y_ITER_ARRAY_SIZE(%2);
@@ -634,9 +644,17 @@ Notes:
 		if (!Player@YSII_Cg)
 		{
 			#if defined _FOREACH_BOT && !defined FOREACH_NO_BOTS
-				CallLocalFunction("Itter_OnGameModeInit", "", Bot@YSII_Cg, Character@YSII_Cg, Player@YSII_Cg);
+				CallLocalFunction("Itter_OnGameModeInit", "", _:Bot@YSII_Cg, _:Character@YSII_Cg, _:Player@YSII_Cg);
 			#else
-				CallLocalFunction("Itter_OnGameModeInit", "", Player@YSII_Cg);
+				CallLocalFunction("Itter_OnGameModeInit", "", _:Player@YSII_Cg);
+			#endif
+			#if defined _YSI_SPECIAL_DEBUG
+				for (new i = 0; i != MAX_PLAYERS; ++i)
+				{
+					Player@YSII_Ag[i] = i + 1;
+				}
+				Player@YSII_Ag[MAX_PLAYERS] = 0;
+				Player@YSII_Cg = _Y_ITER_C3:MAX_PLAYERS;
 			#endif
 			return 1;
 		}
@@ -702,6 +720,14 @@ Notes:
 		#endif
 		Player@YSII_Ag[lastPlayer] = MAX_PLAYERS;
 		CallLocalFunction("Itter_OnGameModeInit", "");
+		#if defined _YSI_SPECIAL_DEBUG
+			for (new i = 0; i != MAX_PLAYERS; ++i)
+			{
+				Player@YSII_Ag[i] = i + 1;
+			}
+			Player@YSII_Ag[MAX_PLAYERS] = 0;
+			Player@YSII_Cg = _Y_ITER_C3:MAX_PLAYERS;
+		#endif
 		return 1;
 	}
 	
@@ -734,38 +760,6 @@ Notes:
 		{
 			CallLocalFunction("Itter_OnPlayerDisconnect", "ii", playerid, reason);
 		}
-		SetTimerEx("Itter_OPDCInternal", 0, false, "i", playerid);
-		return 1;
-	}
-	
-	#if defined _ALS_OnPlayerDisconnect
-		#undef OnPlayerDisconnect
-	#else
-		#define _ALS_OnPlayerDisconnect
-	#endif
-	#define OnPlayerDisconnect Itter_OnPlayerDisconnect
-	forward OnPlayerDisconnect(playerid, reason);
-#endif
-
-/*----------------------------------------------------------------------------*\
-Function:
-	Itter_OPDCInternal
-Params:
-	playerid - Player who left.
-Return:
-	-
-Notes:
-	Called AFTER "OnPlayerDisconnect" so that using "Kick" inside a "foreach"
-	loop doesn't crash the server due to an OOB error.
-\*----------------------------------------------------------------------------*/
-
-#if !defined BOTSYNC_IS_BOT
-	public Itter_OPDCInternal(playerid)
-	{
-		if (IsPlayerConnected(playerid))
-		{
-			return;
-		}
 		#if defined _FOREACH_BOT
 			if (!IsPlayerNPC(playerid))
 			{
@@ -782,7 +776,16 @@ Notes:
 		#else
 			Itter_Remove(Player, playerid);
 		#endif
+		return 1;
 	}
+	
+	#if defined _ALS_OnPlayerDisconnect
+		#undef OnPlayerDisconnect
+	#else
+		#define _ALS_OnPlayerDisconnect
+	#endif
+	#define OnPlayerDisconnect Itter_OnPlayerDisconnect
+	forward OnPlayerDisconnect(playerid, reason);
 #endif
 
 /*----------------------------------------------------------------------------*\
@@ -1005,6 +1008,7 @@ Function:
 Params:
 	&count - Number of items in the itterator.
 	array[] - Itterator data.
+	back[] - Reverse data.
 	size - Size of the iterator.
 Return:
 	-
@@ -1168,3 +1172,17 @@ Notes:
 
 #define Iter_Prev(%1,%2) Itter_PrevInternal(_Y_ITER_ARRAY:%1@YSII_Ag,_Y_ITER_ARRAY_SIZE(%1),(%2))
 #define Itter_Prev(%1,%2) Itter_PrevInternal(_Y_ITER_ARRAY:%1@YSII_Ag,_Y_ITER_ARRAY_SIZE(%1),(%2))
+
+/*----------------------------------------------------------------------------*\
+Function:
+	Iter_InternalArray
+Params:
+	iter - Name of the iterator to
+Return:
+	-
+Notes:
+	Accesses the internal array of an iterator
+\*----------------------------------------------------------------------------*/
+
+#define Iter_InternalArray(%1) (_Y_ITER_ARRAY:%1@YSII_Ag)
+#define Itter_InternalArray(%1) (_Y_ITER_ARRAY:%1@YSII_Ag)
