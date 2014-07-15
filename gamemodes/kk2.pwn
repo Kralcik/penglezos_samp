@@ -2046,7 +2046,6 @@ public OnPlayerConnect(playerid)
 	new string[128];
 	CStats(playerid);
 	LoadStats(playerid);
-	TogglePlayerClock(playerid,1);
 	TextDrawAlignment(Zones[playerid],2);
 	TextDrawSetOutline(Zones[playerid],1);
 	TextDrawAlignment(td_fuel[playerid],3);
