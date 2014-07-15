@@ -2059,7 +2059,6 @@ public OnPlayerConnect(playerid)
 	{GangZoneShowForPlayer(playerid,Organization[i][OrgZones][a],Organization[i][ZoneColor][a]);}}
 	format(string,sizeof(string),"*{A9C4E4}%s{FFFFFF} has joined the server",PlayerName(playerid));
 	SendClientMessageToAll(-1,string);
-	format(string,40,"~g~<~w~join~g~>~w~ %s",PlayerName(playerid));
 	ConnectTextdraw(string);
 	return 1;
 }
@@ -2242,14 +2241,12 @@ public OnPlayerDisconnect(playerid,reason)
 		{
 			format(string,50,"*%s has left the server(Timeout)",PlayerName(playerid));
 			SendClientMessageToAll(GREY,string);
-			format(string,50,"~r~<~w~T-out~r~>~w~ %s",PlayerName(playerid));
     		ConnectTextdraw(string);
 		}
         case 1:
 		{
 			format(string,50,"*%s has left the server",PlayerName(playerid));
 			SendClientMessageToAll(GREY,string);
-			format(string,50,"~r~<~w~Left~r~>~w~ %s",PlayerName(playerid));
     		ConnectTextdraw(string);
 		}
     }
