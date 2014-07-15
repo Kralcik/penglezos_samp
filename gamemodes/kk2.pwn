@@ -9362,7 +9362,7 @@ CMD:god(playerid,params[])
 {
 	if(AdminLevel[playerid] >2)
 	{
-	    SetPlayerArmour(playerid,99999);
+	    SetPlayerHealth(playerid,100000);
         SendClientMessage(playerid,LRED,"You are in god mode!");
 	}
 	else
