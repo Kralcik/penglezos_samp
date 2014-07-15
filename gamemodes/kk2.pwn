@@ -9358,6 +9358,19 @@ CMD:ajail(playerid,params[])
     return 1;
 }
 //==============================================================================
+CMD:god(playerid,params[])
+{
+	if(AdminLevel[playerid] >2)
+	{
+	    SetPlayerArmour(playerid,99999);
+        SendClientMessage(playerid,LRED,"You are in god mode!");
+	}
+	else
+	{
+	SendClientMessage(playerid,LRED,"God mode is not working here!");
+	}
+}
+//==============================================================================
 CMD:aunjail(playerid,params[])
 {
 	if(IsMuted(playerid))return 1;
