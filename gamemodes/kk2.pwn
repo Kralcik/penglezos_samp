@@ -2058,6 +2058,7 @@ public OnPlayerConnect(playerid)
 	for(new i=1;i<OrgsCount+1;i++){for(new a=1;a<Organization[i][ZoneCreated]+1;a++)
 	{GangZoneShowForPlayer(playerid,Organization[i][OrgZones][a],Organization[i][ZoneColor][a]);}}
 	format(string,sizeof(string),"*{A9C4E4}%s{FFFFFF} has joined the server",PlayerName(playerid));
+	GameTextForPlayer(playerid,"~w~Welcome to Server Name - KK2 Gamemode!",10000,4);
 	SendClientMessageToAll(-1,string);
 	ConnectTextdraw(string);
 	return 1;
@@ -2100,9 +2101,9 @@ public OnPlayerSpawn(playerid)
 	    registered[playerid]=0;
 	    SetPlayerInterior(playerid,0);
 	    SetPlayerVirtualWorld(playerid,0);
-		GivePlayerMoneyEx(playerid,25000);
+		GivePlayerMoneyEx(playerid,1000);
   		Skin[playerid]=GetPlayerSkin(playerid);
-	    GameTextForPlayer(playerid,"~g~+$25000",800,1);
+	    GameTextForPlayer(playerid,"~g~+$1000",800,1);
 	    SendClientMessage(playerid,LRED,"Note: Use /cmds for server commands,/help for server info/help and");
 	    SendClientMessage(playerid,LRED,"/guide for a short tutorial/guide to the server. Enjoy your stay!");
 	}
