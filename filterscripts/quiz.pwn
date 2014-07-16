@@ -8,7 +8,7 @@ new isenable, answer, number[4];
 
 public OnFilterScriptInit()
 {
-  SetTimer("mathQuiz",4000000, true);
+  SetTimer("mathQuiz",200000, true);
   return 1;
 }
 
