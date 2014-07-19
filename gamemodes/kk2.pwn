@@ -1,54 +1,7 @@
+// This script is entirely coded by LaGrande and reworked by khalifakk (2014)
+// ROLEPLAY GAMEMODE
+// VERSION: 2
 
-/*******************************************************************************
-This script is entirely coded by LaGrande and reworked by khalifakk (2014)
-The script contains the features;
-1. Atms
-2. Jobs
-3. Bank
-4. Bars
-5. Gyms
-6. Tazer
-7. Awards
-8. Anti AFK
-9. Airports
-10. sandking
-11. City Hall
-12. Cellphone
-13. Passports
-14. paintball
-15. bloodring
-16. Vip system
-17. 24/7 Shops
-18. Ammunation
-19. Animations
-20. Anti Cheat
-21. Drug system
-22. Car Dealers
-23. Clothes shop
-24. Boat license
-25. bike license
-26. Bank transfer
-27. Dynamic houses
-28. Register/Login
-29. Flying license
-30. Bleeding system
-31. Server tutorial
-32. Security system
-33. Sell car feature
-34. Dynamic Business
-35. Trucking mission
-36. 60+ Admin Commands
-37. Business Protections
-38. Dynamic Organizations
-40. Weapon Storage System
-39. Customized DINI system
-41. Bank and house robbery
-42. Rp marks and name system
-43. Speedometer and fuel system
-44. Church with marriage system
-45. Dynamic Org Wage and Turf system
-46. Driving License with theoretical and practical tests.
-***************************************************************************** */
 //==============================================================================
 //INCLUDES
 #include <a_samp>
@@ -2058,6 +2011,7 @@ public OnPlayerConnect(playerid)
 	for(new i=1;i<OrgsCount+1;i++){for(new a=1;a<Organization[i][ZoneCreated]+1;a++)
 	{GangZoneShowForPlayer(playerid,Organization[i][OrgZones][a],Organization[i][ZoneColor][a]);}}
 	format(string,sizeof(string),"*{A9C4E4}%s{FFFFFF} has joined the server",PlayerName(playerid));
+	SendClientMessage(playerid,LRED,"Please register you account!");
 	GameTextForPlayer(playerid,"~w~Welcome to Server Name - KK2 Gamemode!",10000,4);
 	SendClientMessageToAll(-1,string);
 	ConnectTextdraw(string);

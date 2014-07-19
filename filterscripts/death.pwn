@@ -155,7 +155,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 // -----------------------------------------------------------------------------
 public OnPlayerDeath(playerid, killerid, reason)
 {
-	new Float:pPosX, Float:pPosY, Float:pPosZ;
+    GivePlayerMoney(playerid, -500);
+    SendClientMessage(playerid, 0x33AA3300, "You gave 500$ to the medics because they healed you life! Thank them!");
+ 	new Float:pPosX, Float:pPosY, Float:pPosZ;
 	GetPlayerPos(playerid, pPosX, pPosY, pPosZ);
     for(new i_slot = 0, gun, ammo; i_slot != 12; i_slot++)
     {
