@@ -72,7 +72,7 @@ public mathQuiz()
         else
 		{
                 isenable = false;
-                format(string, sizeof(string),"No one solved the math Quiz which was "COL_RED"%d"COL_WHITE", so no one wons 1Score, 10$", answer);
+                format(string, sizeof(string),"No one solved the math Quiz which was "COL_RED"%d"COL_WHITE", so no one wons!", answer);
                 SendClientMessageToAll(-1, string);
         }
         return 1;

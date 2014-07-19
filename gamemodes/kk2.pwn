@@ -5500,7 +5500,7 @@ CMD:acmds(playerid,params[])
 	{
         SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/givelicenses /v /getip /setskin /setcash /transfercash /setscore /teletohq /fuck");
         SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/resetcar /wipeorg /setleader /setdrugs /givegun /skydive /setskills /crash");
-		SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/setvip /sethours /setteacher /payday /a(un)jail /banreason /gmx /say");
+		SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/setvip /sethours /setteacher /payday /a(un)jail /banreason /gmx /say /god");
 	}
 	return 1;
 }
@@ -9311,7 +9311,7 @@ CMD:ajail(playerid,params[])
 //==============================================================================
 CMD:god(playerid,params[])
 {
-	if(AdminLevel[playerid] >2)
+	if(AdminLevel[playerid] >3)
 	{
 	    SetPlayerHealth(playerid,100000);
         SendClientMessage(playerid,LRED,"You are in god mode!");
