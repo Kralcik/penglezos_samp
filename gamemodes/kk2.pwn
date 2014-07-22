@@ -632,7 +632,6 @@ new paintball;
 new RPCars[3];
 new bloodringe;
 new textdraw=0;
-new globaltimer;
 new PropertyCount;
 new BusinessCount;
 new Text:Textdraw1;
@@ -766,8 +765,7 @@ public OnGameModeInit()
     ShowPlayerMarkers(0);
     EnableStuntBonusForAll(0);
    	ManualVehicleEngineAndLights();
-	SetGameModeText("RolePlay/RealLife");
-    globaltimer=SetTimer("Global",1300,true);
+	SetGameModeText("KK Roleplay");
 //==============================================================================
 	CreateAtm(414.4580,2533.7800,16.5648,88.798);
 	CreateAtm(2159.2224,939.9501,10.8203,2.8198);
@@ -1990,7 +1988,6 @@ public OnGameModeInit()
 public OnGameModeExit()
 {
 	SaveOrg();
-	KillTimer(globaltimer);
 	return 1;
 }
 //==============================================================================
@@ -8686,7 +8683,6 @@ CMD:gmx(playerid,params[])
 			SaveOrg();
 			SStats(i);
 			CStats(i);
-			KillTimer(globaltimer);
 			SendClientMessage(i,RED,"An Administrator has restarted the server");
 			SendClientMessage(i,RED,"Please wait till the server restarts,and then you may continue playing");
 		}
@@ -10799,8 +10795,6 @@ stock IsJailedOrMuted(playerid)
 	if(!IsPlayerConnectedEx(playerid))return 1;
     if(Mute[playerid]>0)return SendClientMessage(playerid,RED,"ERROR: {FFFFFF}You are muted");
 	if(Jailed[playerid]>0)return SendClientMessage(playerid,RED,"ERROR: {FFFFFF}You are jailed");
-	if(CMDUsed[playerid]==1)return SendClientMessage(playerid,RED,"ERROR: {FFFFFF}Anti Command Flood");
-	CMDUsed[playerid]=1;
  	return 0;
 }
 //==============================================================================
