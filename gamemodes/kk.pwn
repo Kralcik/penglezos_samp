@@ -1804,7 +1804,6 @@ public OnPlayerConnect(playerid)
 	for(new i=1;i<OrgsCount+1;i++){for(new a=1;a<Organization[i][ZoneCreated]+1;a++)
 	{GangZoneShowForPlayer(playerid,Organization[i][OrgZones][a],Organization[i][ZoneColor][a]);}}
 	format(string,sizeof(string),"*{A9C4E4}%s{FFFFFF} has joined the server",PlayerName(playerid));
-	SendClientMessage(playerid,LRED,"Please register you account!");
 	GameTextForPlayer(playerid,"~w~Welcome to Server Name - KK2 Gamemode!",10000,4);
 	SendClientMessageToAll(-1,string);
 	ConnectTextdraw(string);
