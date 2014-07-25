@@ -1,10 +1,6 @@
 // This script is entirely coded by LaGrande and reworked by khalifakk (2014)
 // ROLEPLAY GAMEMODE
-<<<<<<< HEAD
-// VERSION: 2
-=======
 // VERSION: 3
->>>>>>> parent of a5e90fc... Revert "Updates!"
 
 //==============================================================================
 //INCLUDES
@@ -766,10 +762,10 @@ main(){}
 public OnGameModeInit()
 {
 for(new s = 0; s < 300; s++)
-  {
+   {
     if(IsInvalidSkin(s)) continue;
     else AddPlayerClass(s, 1646.6692,-2327.8423,13.5469,352.2056,-1,-1,-1,-1,-1,-1);
-  }
+   }
     CreateTextdraws();
     ShowPlayerMarkers(0);
     EnableStuntBonusForAll(0);
@@ -1808,6 +1804,7 @@ public OnPlayerConnect(playerid)
 	for(new i=1;i<OrgsCount+1;i++){for(new a=1;a<Organization[i][ZoneCreated]+1;a++)
 	{GangZoneShowForPlayer(playerid,Organization[i][OrgZones][a],Organization[i][ZoneColor][a]);}}
 	format(string,sizeof(string),"*{A9C4E4}%s{FFFFFF} has joined the server",PlayerName(playerid));
+	SendClientMessage(playerid,LRED,"Please register you account!");
 	GameTextForPlayer(playerid,"~w~Welcome to Server Name - KK2 Gamemode!",10000,4);
 	SendClientMessageToAll(-1,string);
 	ConnectTextdraw(string);
@@ -5284,7 +5281,6 @@ CMD:acmds(playerid,params[])
 	if(AdminLevel[playerid]==0)return 0;
 	if(AdminLevel[playerid] >=1)
 	{
-<<<<<<< HEAD
 		SendClientMessage(playerid,YELLOW,"Administrator LEVEL 1: {FFFFFF}/a /vips /unbug /carcolor /cellnumbers /ann /mute /getweaps /stats [id]");
 		SendClientMessage(playerid,YELLOW,"Administrator LEVEL 1: {FFFFFF}/slap /disarm /explode /freeze /unfreeze /kick /unmute /nos /kill");
 	}
@@ -5298,17 +5294,6 @@ CMD:acmds(playerid,params[])
         SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/givelicenses /v /getip /setskin /setcash /transfercash /setscore /teletohq /fuck");
         SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/resetcar /wipeorg /setleader /setdrugs /givegun /skydive /setskills /crash");
 		SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/setvip /sethours /setteacher /payday /a(un)jail /banreason /gmx /say /god");
-=======
-		SendClientMessage(playerid,YELLOW,"AVAILABLE COMMANDS:");
-		SendClientMessage(playerid,YELLOW,"----------------------");
-		SendClientMessage(playerid,YELLOW,"{FFFFFF}/a /vips /unbug /carcolor /cellnumbers /ann /mute /getweaps /stats [id]");
-		SendClientMessage(playerid,YELLOW,"{FFFFFF}/slap /disarm /explode /freeze /unfreeze /kick /unmute /nos /kill");
-		SendClientMessage(playerid,0x1344ECFF,"{FFFFFF}/setweather /tp /checkcash /goto /get /specoff /spec /sethealth /setarmor /registered");
-		SendClientMessage(playerid,0x1344ECFF,"{FFFFFF}/repair /hide /cc /unban /vrespawn /refuelall /ban /flip /lastactive");
-        SendClientMessage(playerid,RED,"{FFFFFF}/givelicenses /v /getip /setskin /setcash /transfercash /setscore /teletohq /fuck");
-        SendClientMessage(playerid,RED,"{FFFFFF}/resetcar /wipeorg /setleader /setdrugs /givegun /skydive /setskills /crash");
-		SendClientMessage(playerid,RED,"{FFFFFF}/setvip /sethours /setteacher /payday /a(un)jail /banreason /gmx /say /god");
->>>>>>> parent of a5e90fc... Revert "Updates!"
 	}
 	return 1;
 }
@@ -12093,16 +12078,16 @@ stock INI_StripLine(string[])
 }
 //==============================================================================
 stock IsInvalidSkin(skinid)
-{
-    #define MAX_BAD_SKINS  14
-    if(skinid > 310) return true;
-    new badSkins[MAX_BAD_SKINS] = {
-        3, 4, 5, 6, 8, 42, 65, 74, 86,
-        119, 149, 208, 273, 289
-    };
-    for (new i = 0; i < MAX_BAD_SKINS; i++)
-    {
-      if (skinid == badSkins[i]) return true;
-    }
-    return false;
-}
+ {
+     #define MAX_BAD_SKINS  14
+     if(skinid > 310) return true;
+     new badSkins[MAX_BAD_SKINS] = {
+         3, 4, 5, 6, 8, 42, 65, 74, 86,
+         119, 149, 208, 273, 289
+     };
+     for (new i = 0; i < MAX_BAD_SKINS; i++)
+     {
+       if (skinid == badSkins[i]) return true;
+     }
+     return false;
+ }
