@@ -4762,7 +4762,7 @@ CMD:cmds(playerid,params[])
 	SendClientMessage(playerid,-1,"/rules /buyskin /animlist /report /(un)lock  /refuel /autolock /music /showmarks /guide /helmet");
 	SendClientMessage(playerid,-1,"/bribe /usedrugs /atm /help /payorg /fuelcan /sellprop /request /getweapon /saveweapon /weapons");
     SendClientMessage(playerid,-1,"/handweapon /carloc /call(911) /tosscoin /awards /t(alk)(anim) /ignorelist /buyprop /myskin /do");
-   	SendClientMessage(playerid,-1,"OTHERS: /repair /bank /ocmds /propose /divorce /acceptproposal /withdraw /deposit");
+   	SendClientMessage(playerid,-1,"OTHERS: /repair /bank /ocmds /propose /divorce /acceptproposal /withdraw /deposit /job");
 	if(VIP[playerid]>0)
 	{
 		SendClientMessage(playerid,-1,"PREMIUM ACCOUNT: /carcolor /changeskin /changecar /weather /nos /nzt");
@@ -9112,6 +9112,12 @@ CMD:god(playerid,params[])
 	SendClientMessage(playerid,LRED,"God mode is not working here!");
 	}
 }
+//==============================================================================
+CMD:job(playerid,params[])
+{
+	    ShowPlayerDialog(playerid,CITY,DIALOG_STYLE_LIST,"City Hall","Passport\nJobs","Choose","Cancel");
+        SendClientMessage(playerid,LRED,"Select your job!");
+	}
 //==============================================================================
 CMD:aunjail(playerid,params[])
 {
