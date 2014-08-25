@@ -1804,9 +1804,12 @@ public OnPlayerConnect(playerid)
 	for(new i=1;i<OrgsCount+1;i++){for(new a=1;a<Organization[i][ZoneCreated]+1;a++)
 	{GangZoneShowForPlayer(playerid,Organization[i][OrgZones][a],Organization[i][ZoneColor][a]);}}
 	format(string,sizeof(string),"*{A9C4E4}%s{FFFFFF} has joined the server",PlayerName(playerid));
-	GameTextForPlayer(playerid, "~g~Welcome ~r~to ~p~Server Name~y~- KK2 Gamemode!", 5001, 6);
+	GameTextForPlayer(playerid, "~g~Welcome to KK Gamemode!", 5001, 6);
 	SendClientMessageToAll(-1,string);
 	ConnectTextdraw(string);
+	SendClientMessage(playerid, 0x00FF00FF, "SERVER URL: www.server.com");
+    SendClientMessage(playerid, 0x00FF00FF, "SERVER IP: 127.0.0.1");
+    SendClientMessage(playerid, 0x00FFFFFF, "SERVER: Have a nice stay on our server and please follow the /rules !");
 	return 1;
 }
 //==============================================================================
