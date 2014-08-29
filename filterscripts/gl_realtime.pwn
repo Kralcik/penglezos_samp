@@ -38,7 +38,7 @@ public UpdateTimeAndWeather()
 {
 	// Update time
     gettime(hour, minute);
-
+   
    	format(timestr,32,"%02d:%02d",hour,minute);
    	TextDrawSetString(txtTimeDisp,timestr);
    	SetWorldTime(hour);
