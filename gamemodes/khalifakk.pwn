@@ -632,7 +632,6 @@ new paintball;
 new RPCars[3];
 new bloodringe;
 new textdraw=0;
-new globaltimer;
 new PropertyCount;
 new BusinessCount;
 new Text:Textdraw1;
@@ -767,7 +766,6 @@ public OnGameModeInit()
     EnableStuntBonusForAll(0);
    	ManualVehicleEngineAndLights();
 	SetGameModeText("RolePlay/RealLife");
-    globaltimer=SetTimer("Global",1300,true);
 //==============================================================================
 	CreateAtm(414.4580,2533.7800,16.5648,88.798);
 	CreateAtm(2159.2224,939.9501,10.8203,2.8198);
@@ -1990,7 +1988,6 @@ public OnGameModeInit()
 public OnGameModeExit()
 {
 	SaveOrg();
-	KillTimer(globaltimer);
 	return 1;
 }
 //==============================================================================
@@ -1999,7 +1996,6 @@ public OnPlayerConnect(playerid)
 	new string[128];
 	CStats(playerid);
 	LoadStats(playerid);
-	TogglePlayerClock(playerid,1);
 	TextDrawAlignment(Zones[playerid],2);
 	TextDrawSetOutline(Zones[playerid],1);
 	TextDrawAlignment(td_fuel[playerid],3);
@@ -8688,7 +8684,6 @@ CMD:gmx(playerid,params[])
 			SaveOrg();
 			SStats(i);
 			CStats(i);
-			KillTimer(globaltimer);
 			SendClientMessage(i,RED,"An Administrator has restarted the server");
 			SendClientMessage(i,RED,"Please wait till the server restarts,and then you may continue playing");
 		}
