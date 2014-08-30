@@ -765,7 +765,7 @@ public OnGameModeInit()
     ShowPlayerMarkers(0);
     EnableStuntBonusForAll(0);
    	ManualVehicleEngineAndLights();
-	SetGameModeText("RolePlay/RealLife");
+	SetGameModeText("KK Roleplay|Real Life");
 //==============================================================================
 	CreateAtm(414.4580,2533.7800,16.5648,88.798);
 	CreateAtm(2159.2224,939.9501,10.8203,2.8198);
@@ -1977,7 +1977,12 @@ public OnGameModeInit()
 	CreateOrgVehicle("N.O.O.S.E",415,1544.3873,-1672.0697,5.6632,90.1236,0,1);
 	CreateOrgVehicle("N.O.O.S.E",487,1550.0032,-1612.9944,13.5615,179.6015,0,87);
 //==============================================================================
-    for(new i=0; i<MAX_VEHICLES; i++){OnVehicleSpawn(i);}
+	print("\n--------------------------------------");
+	print(" Roleplay|Real Life Gamemode Script     ");
+	print(" Coded by: LaGrande                     ");
+	print(" Reworked by: khalifakk                 ");
+	print("--------------------------------------\n");
+	for(new i=0; i<MAX_VEHICLES; i++){OnVehicleSpawn(i);}
 	printf("Total Businesses Loaded: %i",BusinessCount);
 	printf("Total Properties Loaded: %i",PropertyCount);
 	printf("Total Organizations Loaded: %i",OrgsCount);
@@ -2007,10 +2012,13 @@ public OnPlayerConnect(playerid)
 	TextDrawLetterSize(sdisplay[playerid],0.4,1.5);
 	for(new i=1;i<OrgsCount+1;i++){for(new a=1;a<Organization[i][ZoneCreated]+1;a++)
 	{GangZoneShowForPlayer(playerid,Organization[i][OrgZones][a],Organization[i][ZoneColor][a]);}}
-	format(string,sizeof(string),"*{A9C4E4}%s{FFFFFF} has joined the server",PlayerName(playerid));
+	format(string,sizeof(string),"-{A9C4E4}%s{FFFFFF} has joined the server",PlayerName(playerid));
 	SendClientMessageToAll(-1,string);
-	format(string,40,"~g~<~w~join~g~>~w~ %s",PlayerName(playerid));
+	format(string,40,"~g~<~w~Join~g~>~w~ %s",PlayerName(playerid));
 	ConnectTextdraw(string);
+    GameTextForPlayer(playerid,"~w~SERVER NAME", 5000, 1);
+    SendClientMessage(playerid,LBLUE,"SERVER IP: 127.0.0.1");
+    SendClientMessage(playerid,LBLUE,"SERVER URL: www.server.com");
 	return 1;
 }
 //==============================================================================
@@ -2051,9 +2059,9 @@ public OnPlayerSpawn(playerid)
 	    registered[playerid]=0;
 	    SetPlayerInterior(playerid,0);
 	    SetPlayerVirtualWorld(playerid,0);
-		GivePlayerMoneyEx(playerid,25000);
+		GivePlayerMoneyEx(playerid,1000);
   		Skin[playerid]=GetPlayerSkin(playerid);
-	    GameTextForPlayer(playerid,"~g~+$25000",800,1);
+	    GameTextForPlayer(playerid,"~g~+$1000",800,1);
 	    SendClientMessage(playerid,LRED,"Note: Use /cmds for server commands,/help for server info/help and");
 	    SendClientMessage(playerid,LRED,"/guide for a short tutorial/guide to the server. Enjoy your stay!");
 	}
