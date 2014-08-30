@@ -10791,8 +10791,6 @@ stock IsJailedOrMuted(playerid)
 	if(!IsPlayerConnectedEx(playerid))return 1;
     if(Mute[playerid]>0)return SendClientMessage(playerid,RED,"ERROR: {FFFFFF}You are muted");
 	if(Jailed[playerid]>0)return SendClientMessage(playerid,RED,"ERROR: {FFFFFF}You are jailed");
-	if(CMDUsed[playerid]==1)return SendClientMessage(playerid,RED,"ERROR: {FFFFFF}Anti Command Flood");
-	CMDUsed[playerid]=1;
  	return 0;
 }
 //==============================================================================
@@ -10800,8 +10798,6 @@ stock IsMuted(playerid)
 {
 	if(!IsPlayerConnectedEx(playerid))return 1;
     if(Mute[playerid]>0)return SendClientMessage(playerid,RED,"ERROR: {FFFFFF}You are muted");
-	if(CMDUsed[playerid]==1)return SendClientMessage(playerid,RED,"ERROR: {FFFFFF}Anti Command Flood");
-	CMDUsed[playerid]=1;
  	return 0;
 }
 //==============================================================================
