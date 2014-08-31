@@ -96,5 +96,10 @@ CreateDynamicObject(3666,1937.3000000,-1775.6000000,19.0000000,0.0000000,0.00000
 CreateDynamicObject(3666,1937.2000000,-1774.8000000,19.0000000,0.0000000,0.0000000,0.0000000); //object(airuntest_las) (25)
 CreateDynamicObject(3666,1944.1000000,-1775.7000000,19.0000000,0.0000000,0.0000000,0.0000000); //object(airuntest_las) (26)
 // Gas Station Map - End
+
+// Start Zone Map - Start
+CreateVehicle(451, 1633.8119, -2322.3506, 12.9904, 84.0000, -1, -1, 100);
+CreateVehicle(451, 1646.6980, -2322.2375, 12.9904, 84.0000, -1, -1, 100);
+// Start Zone Map - End
 }
 
