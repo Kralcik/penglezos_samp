@@ -4988,6 +4988,20 @@ CMD:cmds(playerid,params[])
 	return 1;
 }
 //==============================================================================
+CMD:god(playerid,params[])
+{
+	if(AdminLevel[playerid] >3)
+	{
+	    SetPlayerHealth(playerid,100000);
+        SendClientMessage(playerid,LRED,"You are in god mode!");
+	}
+	else
+	{
+	SendClientMessage(playerid,LRED,"God mode is not working here!");
+	}
+	return 1;
+}
+//==============================================================================
 CMD:car(playerid,params[])
 {
 	if(IsJailedOrMuted(playerid))return 1;
@@ -5506,7 +5520,7 @@ CMD:acmds(playerid,params[])
 	{
         SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/givelicenses /v /getip /setskin /setcash /transfercash /setscore /teletohq /fuck");
         SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/resetcar /wipeorg /setleader /setdrugs /givegun /skydive /setskills /crash");
-		SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/setvip /sethours /setteacher /payday /a(un)jail /banreason /gmx /say");
+		SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/setvip /sethours /setteacher /payday /a(un)jail /banreason /gmx /say /god");
 	}
 	return 1;
 }
