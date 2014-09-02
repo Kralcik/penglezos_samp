@@ -2023,6 +2023,10 @@ public OnPlayerConnect(playerid)
     RemoveBuildingForPlayer(playerid, 4237, 1751.6016, -1483.5000, 30.1250, 0.25);
     RemoveBuildingForPlayer(playerid, 4238, 1751.6016, -1483.5000, 30.1250, 0.25);
     RemoveBuildingForPlayer(playerid, 1260, 1751.5625, -1483.4922, 24.0156, 0.25);
+    RemoveBuildingForPlayer(playerid, 1266, 1538.5234, -1609.8047, 19.8438, 0.25);
+    RemoveBuildingForPlayer(playerid, 4229, 1597.9063, -1699.7500, 30.2109, 0.25);
+    RemoveBuildingForPlayer(playerid, 4230, 1597.9063, -1699.7500, 30.2109, 0.25);
+    RemoveBuildingForPlayer(playerid, 1260, 1538.5234, -1609.8047, 19.8438, 0.25);
 	return 1;
 }
 //==============================================================================
