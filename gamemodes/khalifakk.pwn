@@ -1939,15 +1939,6 @@ public OnGameModeInit()
     CreateOrgVehicle("San Andreas Sheriff Dept",596,-226.8165,995.0396,19.2878,271.0459,44,1);
     CreateOrgVehicle("San Andreas Sheriff Dept",596,-226.9070,998.9597,19.3244,270.8278,44,1);
 //==============================================================================
-	CreateOrgVehicle("San Andreas Police Dept",596,1600.3672,-1704.1592,5.6134,89.9169,53,1);
- 	CreateOrgVehicle("San Andreas Police Dept",	596,1601.9924,-1683.9258,5.6172,90.1193,53,1);
-  	CreateOrgVehicle("San Andreas Police Dept",596,1601.5157,-1687.8063,5.6290,271.2682,53,1);
-   	CreateOrgVehicle("San Andreas Police Dept",523,1584.7913,-1671.4995,5.4749,87.3000,53,1);
-    CreateOrgVehicle("San Andreas Police Dept",596,1584.9387,-1667.3485,5.6397,91.5504,53,1);
-    CreateOrgVehicle("San Andreas Police Dept",427,1578.5000,-1710.5018,6.0308,359.5999,53,1);
-    CreateOrgVehicle("San Andreas Police Dept",601,1591.3596,-1711.1451,5.6492,358.5456,53,1);
-    CreateOrgVehicle("San Andreas Police Dept",497,1562.0331,-1613.9691,13.5300,179.1236,53,1);
-//==============================================================================
  	CreateOrgVehicle("The Company",521,12.0059,-253.1938,4.9947,89.3708,25,25);
   	CreateOrgVehicle("The Company",521,12.1137,-249.0528,5.0016,90.1450,25,25);
    	CreateOrgVehicle("The Company",490,12.4397,-244.8801,5.5458,90.3718,25,25);
@@ -1967,15 +1958,6 @@ public OnGameModeInit()
 	CreateOrgVehicle("Ninkyo Dantai",405,-1703.5071,1011.9547,17.4599,270.7780,0,0);
 	CreateOrgVehicle("Ninkyo Dantai",551,-1703.4963,1007.8770,17.3694,268.0886,0,0);
 	CreateOrgVehicle("Ninkyo Dantai",602,-1703.4086,999.4642,17.3864,89.9342,0,0);
-//==============================================================================
-	CreateOrgVehicle("N.O.O.S.E",490,1545.4889,-1684.2483,5.9933,88.8938,0,87);
-	CreateOrgVehicle("N.O.O.S.E",490,1545.3494,-1680.0029,5.9900,90.7577,0,87);
-	CreateOrgVehicle("N.O.O.S.E",490,1545.2202,-1676.1488,6.0223,88.1452,0,87);
-	CreateOrgVehicle("N.O.O.S.E",601,1545.1033,-1663.1903,5.5916,87.9535,0,87);
-	CreateOrgVehicle("N.O.O.S.E",428,1528.8544,-1687.9026,6.0538,271.3123,0,87);
-	CreateOrgVehicle("N.O.O.S.E",415,1544.4608,-1667.7720,5.6627,89.5138,0,1);
-	CreateOrgVehicle("N.O.O.S.E",415,1544.3873,-1672.0697,5.6632,90.1236,0,1);
-	CreateOrgVehicle("N.O.O.S.E",487,1550.0032,-1612.9944,13.5615,179.6015,0,87);
 //==============================================================================
 	print("\n--------------------------------------");
 	print(" Roleplay|Real Life Gamemode Script     ");
