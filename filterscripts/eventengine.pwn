@@ -33,7 +33,7 @@ public OnFilterScriptInit()
 {
 	print("\n------------------------------------------------------");
 	print(" Event Engine by khalifakk has been successfully loaded.");
-	print(" Events loaded: 1 - One Shot DM");
+	print(" Events loaded: 2 - One Shot DM,Star Event");
 	print("\n------------------------------------------------------");
 
 	//MAPPING ARENA
@@ -173,4 +173,68 @@ public OnPlayerDeath(playerid, killerid, reason)
 {
     PlayerSpawned[playerid] = 0;
 	return 1;
+}
+///////////////////////////////////////////////////////////////////////
+// START EVENT
+///////////////////////////////////////////////////////////////////////
+
+#include <a_samp>
+#include <zcmd>
+
+new Star;
+
+public OnPlayerPickUpPickup(playerid, pickupid)
+{
+    if(pickupid == Star)
+    {
+        new name[MAX_PLAYER_NAME];
+        GetPlayerName(playerid, name, sizeof(name));
+        SendClientMessageToAll(-1, "{FF0000}{FFFF00}STAR {0066CC}was found{15FF00}!");
+        SendClientMessage(playerid,-1, "{FF0000}You found the {FFFF00}STAR {0066CC}!");
+        SendClientMessage(playerid,-1, "{FF0000}You got {FFFF00}8830 {0066CC}$");
+        GivePlayerMoney(playerid, 5000);
+        DestroyPickup(Star);
+        GameTextForAll("~r~Event ~b~ over ~y~!", 5000, 5);
+    }
+    return 1;
+}
+
+CMD:star(playerid,params[])
+{
+    if(IsPlayerAdmin(playerid))
+    {
+        SetTimer("Pickup", 1000, false);
+    }
+    return 1;
+}
+
+CMD:startsevent(playerid,params[])
+{
+    if(IsPlayerAdmin(playerid))
+    {
+        new string[64];
+        format(string,sizeof(string),"{FF0000}Star Event {FFFF00}was activated !");
+        SendClientMessageToAll(0xFFFFFFAA,string);
+    }
+    return 1;
+}
+
+CMD:stopsevent(playerid,params[])
+{
+    if(IsPlayerAdmin(playerid))
+    {
+        GameTextForAll("~r~Star Event ~b~ destroyed ~y~!", 5000, 5);
+        DestroyPickup(Star);
+    }
+    return 1;
+}
+
+forward Pickup(playerid);
+public Pickup(playerid)
+{
+    new Float:X, Float:Y, Float:Z;
+    GetPlayerPos(playerid,X,Y,Z);
+    Star = CreatePickup(1247, 1, X,Y,Z, -1);
+    SendClientMessage(playerid,-1,"{FF0000}You have created {FFFF00}a STAR {15FF00}for {0066CC}Star Event");
+    GameTextForPlayer(playerid, "~r~Star ~b~Cre~y~ated", 5000, 5);
 }
