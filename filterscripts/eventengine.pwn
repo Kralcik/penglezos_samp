@@ -1,3 +1,10 @@
+/////////////////////////////////////////////////
+// Event engine
+// Coded by khalifakk
+/////////////////////////////////////////////////
+
+// ONE SHOT DM
+
 #include <a_samp>
 #include <zcmd>
 #include <sscanf2>
@@ -33,7 +40,7 @@ public OnFilterScriptInit()
 {
 	print("\n------------------------------------------------------");
 	print(" Event Engine by khalifakk has been successfully loaded.");
-	print(" Events loaded: 2 - One Shot DM,Star Event");
+	print(" Events loaded: 3 - One Shot DM,Star Event,Quiz Event");
 	print("\n------------------------------------------------------");
 
 	//MAPPING ARENA
@@ -175,7 +182,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 	return 1;
 }
 ///////////////////////////////////////////////////////////////////////
-// START EVENT
+// STAR EVENT
 ///////////////////////////////////////////////////////////////////////
 
 #include <a_samp>
@@ -238,3 +245,91 @@ public Pickup(playerid)
     SendClientMessage(playerid,-1,"{FF0000}You have created {FFFF00}a STAR {15FF00}for {0066CC}Star Event");
     GameTextForPlayer(playerid, "~r~Star ~b~Cre~y~ated", 5000, 5);
 }
+///////////////////////////////////////////////////////////////////////
+// QUIZ EVENT
+///////////////////////////////////////////////////////////////////////
+
+#define dcmd(%1,%2,%3) if (!strcmp((%3)[1], #%1, true, (%2)) && ((((%3)[(%2) + 1] == '\0') && (dcmd_%1(playerid, ""))) || (((%3)[(%2) + 1] == ' ') && (dcmd_%1(playerid, (%3)[(%2) + 2]))))) return 1
+
+// Colours
+#define COLOR_RED 0xFF0000FF
+#define COLOR_YELLOW 0xFFFF00AA
+#define COLOR_ORANGE 0xFF9900AA
+#define COL_RED   "{FF0000}"
+#define COL_WHITE "{FFFFFF}"
+#define COL_GREEN "{33AA33}"
+
+new isenable, answer, number[4];
+
+public OnFilterScriptInit2()
+{
+  SetTimer("mathQuiz",200000, true);
+  return 1;
+}
+
+public OnPlayerText(playerid,text[])
+{
+   new string[128];
+   if(isenable && text[0] && answer == strval(text))
+   {
+      new CName[24];
+	  GetPlayerName(playerid, CName, 24);
+      isenable = false;
+      format(string, sizeof(string),"%s answered the right answer of math Quiz which was "COL_RED"%d "COL_WHITE"and wons 3 Scores, 2000$ Cash",CName,answer);
+      SendClientMessageToAll(-1, string);
+      SetPlayerScore(playerid, GetPlayerScore(playerid)+3);
+      GivePlayerMoney(playerid, 2000);
+      return 0;
+   }
+   return 1;
+}
+
+forward mathQuiz();
+public mathQuiz()
+{
+		new string[128];
+        if(!isenable)
+        {
+                switch(random(4))
+				{
+                        case 0:
+						{
+                                answer = (number[0]=random(1000)) + (number[1]=random(840));
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" + "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 2000$ Cash",number[0], number[1]);
+                        }
+                        case 1:
+						{
+                                do
+								{
+ 								  answer = (number[0]=random(500)) - (number[1]=random(500));
+                                }
+								while(number[0] < number[1]);
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" - "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 2000$ Cash",number[0], number[1]);
+                        }
+                        case 2:
+						{
+                                answer = (number[0]=random(100)) * (number[1]=random(80));
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" * "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 2000$ Cash",number[0], number[1]);
+                        }
+                        case 3:
+						{
+                                do
+								{
+                                        answer = (number[0]=random(1000)+1) / (number[1]=random(600)+1);
+                                }
+								while(number[0] % number[1]);
+                                format(string, sizeof(string),"[Quiz System] First one who Solve "COL_GREEN"%d"COL_WHITE" / "COL_GREEN"%d"COL_WHITE" will get 3 Scores, 2000$ Cash",number[0], number[1]);
+                        }
+                }
+                SendClientMessageToAll(-1, string);
+                isenable = true;
+        }
+        else
+		{
+                isenable = false;
+                format(string, sizeof(string),"No one solved the math Quiz which was "COL_RED"%d"COL_WHITE", so no one wons!", answer);
+                SendClientMessageToAll(-1, string);
+        }
+        return 1;
+}
+
