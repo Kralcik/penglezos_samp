@@ -198,10 +198,10 @@ public OnPlayerPickUpPickup(playerid, pickupid)
         GetPlayerName(playerid, name, sizeof(name));
         SendClientMessageToAll(-1, "{FF0000}{FFFF00}STAR {0066CC}was found{15FF00}!");
         SendClientMessage(playerid,-1, "{FF0000}You found the {FFFF00}STAR {0066CC}!");
-        SendClientMessage(playerid,-1, "{FF0000}You got {FFFF00}8830 {0066CC}$");
+        SendClientMessage(playerid,-1, "{FF0000}You got {FFFF00}5000 {0066CC}$");
         GivePlayerMoney(playerid, 5000);
         DestroyPickup(Star);
-        GameTextForAll("~r~Event ~b~ over ~y~!", 5000, 5);
+        GameTextForAll("~r~Star Event ~b~ over ~y~!", 5000, 5);
     }
     return 1;
 }
@@ -215,22 +215,11 @@ CMD:star(playerid,params[])
     return 1;
 }
 
-CMD:startsevent(playerid,params[])
-{
-    if(IsPlayerAdmin(playerid))
-    {
-        new string[64];
-        format(string,sizeof(string),"{FF0000}Star Event {FFFF00}was activated !");
-        SendClientMessageToAll(0xFFFFFFAA,string);
-    }
-    return 1;
-}
-
 CMD:stopsevent(playerid,params[])
 {
     if(IsPlayerAdmin(playerid))
     {
-        GameTextForAll("~r~Star Event ~b~ destroyed ~y~!", 5000, 5);
+        GameTextForAll("~r~Star Event ~b~ Destroyed ~y~!", 5000, 5);
         DestroyPickup(Star);
     }
     return 1;
@@ -243,7 +232,8 @@ public Pickup(playerid)
     GetPlayerPos(playerid,X,Y,Z);
     Star = CreatePickup(1247, 1, X,Y,Z, -1);
     SendClientMessage(playerid,-1,"{FF0000}You have created {FFFF00}a STAR {15FF00}for {0066CC}Star Event");
-    GameTextForPlayer(playerid, "~r~Star ~b~Cre~y~ated", 5000, 5);
+    GameTextForPlayer(playerid, "~r~Star Event ACTIVATED!You have plenty time to find star and win the money!Admins will give you tips about the location!", 1000000, 5);
+    
 }
 ///////////////////////////////////////////////////////////////////////
 // QUIZ EVENT
