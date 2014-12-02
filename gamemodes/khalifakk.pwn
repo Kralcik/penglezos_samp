@@ -1998,9 +1998,6 @@ public OnPlayerConnect(playerid)
 	SendClientMessageToAll(-1,string);
 	format(string,40,"~g~<~w~Join~g~>~w~ %s",PlayerName(playerid));
 	ConnectTextdraw(string);
-    GameTextForPlayer(playerid,"~w~SERVER NAME", 5000, 1);
-    SendClientMessage(playerid,LBLUE,"SERVER IP: 127.0.0.1");
-    SendClientMessage(playerid,LBLUE,"SERVER URL: www.server.com");
     RemoveBuildingForPlayer(playerid, 1266, 1751.5625, -1483.4922, 24.0156, 0.25);
     RemoveBuildingForPlayer(playerid, 4237, 1751.6016, -1483.5000, 30.1250, 0.25);
     RemoveBuildingForPlayer(playerid, 4238, 1751.6016, -1483.5000, 30.1250, 0.25);
