@@ -1,11 +1,12 @@
 // Anti-Cheat Guard
 // Coded by: khalifakk
-// Cheats protected: jetpack
-// Version: 1.1 (only one anti-cheat included)
+// Cheats protected: jetpack,armour
+// Version: 1.2
 
 #include <a_samp>
 
 new JetPack[MAX_PLAYERS];
+new LastArmour[MAX_PLAYERS];
 
 public OnFilterScriptInit()
 {
@@ -23,6 +24,22 @@ public OnPlayerConnect(playerid)
 
 public OnPlayerUpdate(playerid)
 {
+// Armour protection
+new Float:armour;
+GetPlayerArmour(playerid,armour);
+new result = armour-LastArmour[playerid];
+if(result > 99.0) // leave that 99.0
+{
+  new string[128], targetid;
+  format(string, sizeof(string), "[Anti-Cheat]: %s has been banned for using armour hacks ",GetName(targetid));
+  SendClientMessageToAll(-1, string);
+  print(string);
+  Ban(playerid);
+}
+else
+{
+  LastArmour[playerid] = armour;
+}
     if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK)
     {
         if(JetPack[playerid] == 0)
