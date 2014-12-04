@@ -1,12 +1,13 @@
 // Anti-Cheat Guard
 // Coded by: khalifakk
-// Cheats protected: jetpack,armour
-// Version: 1.2
+// Cheats protected: jetpack,armour,jump(bunny hop)
+// Version: 1.3
 
 #include <a_samp>
 
 new JetPack[MAX_PLAYERS];
 new LastArmour[MAX_PLAYERS];
+new JoueurAppuieJump[MAX_PLAYERS];
 
 public OnFilterScriptInit()
 {
@@ -15,10 +16,10 @@ public OnFilterScriptInit()
 	print("\n------------------------------------------------------");
 }
 
-// Jetpack protection
 public OnPlayerConnect(playerid)
 {
     JetPack[playerid] = 0;
+    JoueurAppuieJump[playerid] = 0;
 	return 1;
 }
 
@@ -40,6 +41,7 @@ else
 {
   LastArmour[playerid] = armour;
 }
+// Jetpack protection
     if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK)
     {
         if(JetPack[playerid] == 0)
@@ -55,6 +57,37 @@ else
             return 1;
     }
     else JetPack[playerid] = 0;
+    return 1;
+}
+
+// Jump (bunny hop) protection
+forward AppuieJump(playerid);
+public AppuieJump(playerid)
+{
+    JoueurAppuieJump[playerid] = 0;
+    ClearAnimations(playerid);
+    return 1;
+}
+forward AppuiePasJump(playerid);
+public AppuiePasJump(playerid)
+{
+    JoueurAppuieJump[playerid] = 0;
+    return 1;
+}
+public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
+{
+	if((newkeys & KEY_JUMP) && !IsPlayerInAnyVehicle(playerid))
+    {
+        JoueurAppuieJump[playerid] ++;
+        SetTimerEx("AppuiePasJump", 10000, false, "i", playerid);
+
+        if(JoueurAppuieJump[playerid] == 2)
+        {
+            ApplyAnimation(playerid, "PED", "BIKE_fall_off", 4.1, 0, 1, 1, 1, 0, 1);
+			GameTextForPlayer(playerid,"~r~Illegal~w~ Action",3000,0);
+			SetTimerEx("AppuieJump", 3000, false, "i", playerid);
+        }
+    }
     return 1;
 }
 
