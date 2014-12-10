@@ -1,10 +1,16 @@
 // Anti-Cheat Guard
 // Coded by: khalifakk
-// Cheats protected: jetpack,armour,jump(bunny hop)
-// Version: 1.3
+// Cheats protected: jetpack,armour,jump(bunny hop),ping
+// Version: 1.4
 
 #include <a_samp>
+#include <zcmd>
 
+#define MAXPINGS 1000
+#define enable 0
+#define disable 1
+
+new ping[MAX_PLAYERS];
 new JetPack[MAX_PLAYERS];
 new LastArmour[MAX_PLAYERS];
 new JoueurAppuieJump[MAX_PLAYERS];
@@ -41,6 +47,21 @@ else
 {
   LastArmour[playerid] = armour;
 }
+// High Ping protection
+if(ping[playerid] != disable)
+	{
+		if(GetPlayerPing(playerid) > MAXPINGS)
+		{
+            SetTimerEx("pKick", 10, true, "i", playerid);
+			new string[128], targetid;
+            format(string, sizeof(string), "[Anti-Cheat]: %s has been kicked for high ping. ",GetName(targetid));
+            SendClientMessageToAll(-1, string);
+            print(string);
+			GameTextForPlayer(playerid,"~r~High~w~ Ping",3000,0);
+			GameTextForPlayer(playerid,"~r~Please~w~ Restart",3000,0);
+   }
+   return 1;
+}
 // Jetpack protection
     if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK)
     {
@@ -59,7 +80,6 @@ else
     else JetPack[playerid] = 0;
     return 1;
 }
-
 // Jump (bunny hop) protection
 forward AppuieJump(playerid);
 public AppuieJump(playerid)
@@ -96,6 +116,12 @@ public KickTimer(playerid)
 {
     Kick(playerid);
     return 1;
+}
+
+forward pKick(playerid);
+public pKick(playerid)
+{
+    Kick(playerid);
 }
 
 stock GetName(playerid)
