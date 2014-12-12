@@ -1,7 +1,7 @@
 // Anti-Cheat Guard
 // Coded by: khalifakk
 // Cheats protected: jetpack,armour,jump(bunny hop),ping
-// Version: 1.4
+// Version: 1.5
 
 #include <a_samp>
 #include <zcmd>
@@ -58,9 +58,7 @@ if(ping[playerid] != disable)
             SendClientMessageToAll(-1, string);
             print(string);
 			GameTextForPlayer(playerid,"~r~High~w~ Ping",3000,0);
-			GameTextForPlayer(playerid,"~r~Please~w~ Restart",3000,0);
-   }
-   return 1;
+		}
 }
 // Jetpack protection
     if(GetPlayerSpecialAction(playerid) == SPECIAL_ACTION_USEJETPACK)
