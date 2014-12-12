@@ -756,6 +756,7 @@ new PlayerAwards[MAX_PLAYERS][Awards];
 new Text3D:vehicle3Dtext[MAX_VEHICLES];
 new RPName[MAX_PLAYERS][MAX_PLAYER_NAME];
 new MarriedTo[MAX_PLAYERS][MAX_PLAYER_NAME];
+new Text:Time1, Text:Date;
 //==============================================================================
 main(){}
 //==============================================================================
@@ -765,7 +766,20 @@ public OnGameModeInit()
     ShowPlayerMarkers(0);
     EnableStuntBonusForAll(0);
    	ManualVehicleEngineAndLights();
-	SetGameModeText("KK Roleplay|Real Life");
+	SetGameModeText("KK Roleplay | Real Life");
+    SetTimer("settime",1000,true);
+
+	Date = TextDrawCreate(547.000000,11.000000,"--");
+
+	TextDrawFont(Date,3);
+	TextDrawLetterSize(Date,0.399999,1.600000);
+    TextDrawColor(Date,0xffffffff);
+
+	Time1 = TextDrawCreate(547.000000,28.000000,"--");
+
+	TextDrawFont(Time1,1);
+	TextDrawLetterSize(Time1,0.399999,1.600000);
+	TextDrawColor(Time1,0xffffffff);
 //==============================================================================
 	CreateAtm(414.4580,2533.7800,16.5648,88.798);
 	CreateAtm(2159.2224,939.9501,10.8203,2.8198);
@@ -2011,6 +2025,7 @@ public OnPlayerConnect(playerid)
 //==============================================================================
 public OnPlayerSpawn(playerid)
 {
+    TextDrawShowForPlayer(playerid, Time1), TextDrawShowForPlayer(playerid, Date);
 	if(Died[playerid]==1)
 	{
 	    Died[playerid]=0;
@@ -2178,8 +2193,20 @@ public OnPlayerDeath(playerid,killerid,reason)
  	return 1;
 }
 //==============================================================================
+forward settime(playerid);
+public settime(playerid)
+{
+	new string[256],year,month,day,hours,minutes,seconds;
+	getdate(year, month, day), gettime(hours, minutes, seconds);
+	format(string, sizeof string, "%d/%s%d/%s%d", day, ((month < 10) ? ("0") : ("")), month, (year < 10) ? ("0") : (""), year);
+	TextDrawSetString(Date, string);
+	format(string, sizeof string, "%s%d:%s%d:%s%d", (hours < 10) ? ("0") : (""), hours, (minutes < 10) ? ("0") : (""), minutes, (seconds < 10) ? ("0") : (""), seconds);
+	TextDrawSetString(Time1, string);
+}
+//==============================================================================
 public OnPlayerDisconnect(playerid,reason)
 {
+    TextDrawHideForPlayer(playerid, Time1), TextDrawHideForPlayer(playerid, Date);
     new string[50];
     switch(reason)
     {
