@@ -1,7 +1,7 @@
 // Anti-Cheat Guard
 // Coded by: khalifakk
 // Cheats protected: jetpack,armour,jump(bunny hop),ping
-// Version: 1.5
+// Version: 1.6
 
 #include <a_samp>
 #include <zcmd>
@@ -19,7 +19,7 @@ public OnFilterScriptInit()
 {
 	print("\n------------------------------------------------------");
 	print(" Anti-Cheat Guard by khalifakk                          ");
-	print("\n------------------------------------------------------");
+	print("------------------------------------------------------\n");
 }
 
 public OnPlayerConnect(playerid)
@@ -97,13 +97,13 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	if((newkeys & KEY_JUMP) && !IsPlayerInAnyVehicle(playerid))
     {
         JoueurAppuieJump[playerid] ++;
-        SetTimerEx("AppuiePasJump", 10000, false, "i", playerid);
+        SetTimerEx("AppuiePasJump", 900, false, "i", playerid);
 
         if(JoueurAppuieJump[playerid] == 2)
         {
             ApplyAnimation(playerid, "PED", "BIKE_fall_off", 4.1, 0, 1, 1, 1, 0, 1);
 			GameTextForPlayer(playerid,"~r~Illegal~w~ Action",3000,0);
-			SetTimerEx("AppuieJump", 3000, false, "i", playerid);
+			SetTimerEx("AppuieJump", 1100, false, "i", playerid);
         }
     }
     return 1;

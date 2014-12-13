@@ -41,7 +41,7 @@ public OnFilterScriptInit()
 	print("\n------------------------------------------------------");
 	print(" Event Engine by khalifakk has been successfully loaded.");
 	print(" Events loaded: 3 - One Shot DM,Star Event,Quiz Event");
-	print("\n------------------------------------------------------");
+	print("------------------------------------------------------\n");
 
 	//MAPPING ARENA
 	CreateObject(18981, 1604.84070, -773.00464, 1085.34106,   0.00000, 90.00000, 0.00000);
