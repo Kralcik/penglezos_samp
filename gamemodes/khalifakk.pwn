@@ -2533,6 +2533,10 @@ public OnPlayerText(playerid,text[])
    		SendClientMessage(playerid,LBLUE,str);
        	return 0;
 	}
+	if(AdminLevel[playerid]>1)
+	{
+      SetPlayerColor(playerid, LRED);
+    }
 	if(Reporting[playerid]==1)
 	{
 	    Reporting[playerid]=0;
