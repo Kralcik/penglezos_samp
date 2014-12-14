@@ -1,9 +1,16 @@
 /////////////////////////////////////////////////
 // Event engine
 // Coded by khalifakk
+// Events loaded: 4 :
+// One Shot DM
+// Star Event
+// Quiz Event
+// Money Gift
 /////////////////////////////////////////////////
 
-// ONE SHOT DM
+///////////////////////////////////////////////////////////////////////
+// One Shot DM Event
+///////////////////////////////////////////////////////////////////////
 
 #include <a_samp>
 #include <zcmd>
@@ -40,9 +47,10 @@ public OnFilterScriptInit()
 {
 	print("\n------------------------------------------------------");
 	print(" Event Engine by khalifakk has been successfully loaded.");
-	print(" Events loaded: 3 - One Shot DM,Star Event,Quiz Event");
 	print("------------------------------------------------------\n");
-
+	
+    SetTimer("mathQuiz",200000, true); // Quiz Event Timer
+    
 	//MAPPING ARENA
 	CreateObject(18981, 1604.84070, -773.00464, 1085.34106,   0.00000, 90.00000, 0.00000);
 	CreateObject(18981, 1604.84070, -797.72162, 1085.34106,   0.00000, 90.00000, 0.00000);
@@ -251,12 +259,6 @@ public Pickup(playerid)
 
 new isenable, answer, number[4];
 
-public OnFilterScriptInit2()
-{
-  SetTimer("mathQuiz",200000, true);
-  return 1;
-}
-
 public OnPlayerText(playerid,text[])
 {
    new string[128];
@@ -323,3 +325,18 @@ public mathQuiz()
         return 1;
 }
 
+///////////////////////////////////////////////////////////////////////
+// Money Gift EVENT
+///////////////////////////////////////////////////////////////////////
+
+CMD:gift(playerid,params[])
+{
+    if(IsPlayerAdmin(playerid))
+    {
+       new string[128];
+       format( string, sizeof(string), "~w~Admin gave MONEY GIFT , 2000$ !!");
+       GameTextForAll( string, 5000, 3 );
+       GivePlayerMoney(playerid, 2000);
+    }
+    return 1;
+}

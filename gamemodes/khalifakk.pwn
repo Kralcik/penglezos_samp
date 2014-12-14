@@ -5527,18 +5527,18 @@ CMD:acmds(playerid,params[])
 	if(AdminLevel[playerid] >=1)
 	{
 		SendClientMessage(playerid,YELLOW,"Administrator LEVEL 1: {FFFFFF}/a /vips /unbug /carcolor /cellnumbers /ann /mute /getweaps /stats [id]");
-		SendClientMessage(playerid,YELLOW,"Administrator LEVEL 1: {FFFFFF}/slap /disarm /explode /freeze /unfreeze /kick /unmute /nos /kill");
+		SendClientMessage(playerid,YELLOW,"Administrator LEVEL 1: {FFFFFF}/slap /disarm /explode /freeze /unfreeze /kick /unmute /nos /kill /god /star /stopsevent");
 	}
 	if(AdminLevel[playerid] >=2)
 	{
 		SendClientMessage(playerid,0x1344ECFF,"Administrator LEVEL 2: {FFFFFF}/setweather /tp /checkcash /goto /get /specoff /spec /sethealth /setarmor /registered");
-		SendClientMessage(playerid,0x1344ECFF,"Administrator LEVEL 2: {FFFFFF}/repair /hide /cc /unban /vrespawn /refuelall /ban /flip /lastactive");
+		SendClientMessage(playerid,0x1344ECFF,"Administrator LEVEL 2: {FFFFFF}/repair /hide /cc /unban /vrespawn /refuelall /ban /flip /lastactive /god /star /stopsevent");
 	}
 	if(AdminLevel[playerid] >=3)
 	{
         SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/givelicenses /v /getip /setskin /setcash /transfercash /setscore /teletohq /fuck");
         SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/resetcar /wipeorg /setleader /setdrugs /givegun /skydive /setskills /crash");
-		SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/setvip /sethours /setteacher /payday /a(un)jail /banreason /gmx /say /god");
+		SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/setvip /sethours /setteacher /payday /a(un)jail /banreason /gmx /say /god /star /stopsevent");
 	}
 	return 1;
 }
