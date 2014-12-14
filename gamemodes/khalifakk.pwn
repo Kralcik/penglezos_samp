@@ -5008,14 +5008,10 @@ CMD:cmds(playerid,params[])
 //==============================================================================
 CMD:god(playerid,params[])
 {
-	if(AdminLevel[playerid] >3)
+	if(AdminLevel[playerid] >1)
 	{
 	    SetPlayerHealth(playerid,100000);
-        SendClientMessage(playerid,LRED,"You are in god mode!");
-	}
-	else
-	{
-	SendClientMessage(playerid,LRED,"God mode is not working here!");
+        SendClientMessage(playerid,LRED,"God mode:activated");
 	}
 	return 1;
 }
