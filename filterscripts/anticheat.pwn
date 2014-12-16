@@ -1,7 +1,7 @@
 // Anti-Cheat Guard
 // Coded by: khalifakk
-// Cheats protected: jetpack,armour,jump(bunny hop),ping
-// Version: 1.6
+// Cheats protected: jetpack,armor,jump(bunny hop),ping
+// Version: 1.7
 
 #include <a_samp>
 #include <zcmd>
@@ -37,11 +37,7 @@ GetPlayerArmour(playerid,armour);
 new result = armour-LastArmour[playerid];
 if(result > 99.0) // leave that 99.0
 {
-  new string[128], targetid;
-  format(string, sizeof(string), "[Anti-Cheat]: %s has been banned for using armour hacks ",GetName(targetid));
-  SendClientMessageToAll(-1, string);
-  print(string);
-  Ban(playerid);
+  SetPlayerArmour(playerid, 0);
 }
 else
 {
