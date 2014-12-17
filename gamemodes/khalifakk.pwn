@@ -2621,7 +2621,7 @@ public OnRconLoginAttempt(ip[],password[],success)
         	    }
 				if(success)
     			{
-    			    ShowPlayerDialog(i,SVPASS,DIALOG_STYLE_PASSWORD,"{FF0000}Remote Console","{FFFFFF}LaGrande's RolePlay Remote Console\n\nPlease Enter Remote Console Password","Enter","");
+    			    ShowPlayerDialog(i,SVPASS,DIALOG_STYLE_PASSWORD,"{FF0000}Remote Console","{FFFFFF}Server's Remote Console\n\nPlease Enter Remote Console Password","Enter","");
 			    }
     		}
 		}
@@ -2672,7 +2672,7 @@ public OnDialogResponse(playerid,dialogid,response,listitem,inputtext[])
   			if(strcmp(inputtext,"changeme",false) !=0)
   			{
      			SendClientMessage(playerid,RED,"SERVER: {FFFFFF}Access Denied");
-			 	ShowPlayerDialog(playerid,SVPASS,DIALOG_STYLE_PASSWORD,"{FF0000}Remote Console","{FFFFFF}LaGrande's RolePlay Remote Console\n\nPlease Enter Remote Console Password","Enter","");
+			 	ShowPlayerDialog(playerid,SVPASS,DIALOG_STYLE_PASSWORD,"{FF0000}Remote Console","{FFFFFF}Server's RolePlay Remote Console\n\nPlease Enter Remote Console Password","Enter","");
 			}
 		}
 		return 1;
@@ -4971,7 +4971,7 @@ CMD:rules(playerid,params[])
 CMD:help(playerid,params[])
 {
 	if(IsJailedOrMuted(playerid))return 1;
-    SendClientMessage(playerid,YELLOW,"LaGrande's Roleplay Server Help");
+    SendClientMessage(playerid,YELLOW,"Server Help");
     SendClientMessage(playerid,-1,"The main objective of the server is to RolePlay");
     SendClientMessage(playerid,-1,"RolePlay is quite similiar to acting,you act and");
     SendClientMessage(playerid,-1,"pretend to be that person. On the other hand you can");
@@ -4980,14 +4980,14 @@ CMD:help(playerid,params[])
     SendClientMessage(playerid,-1,"Of what has to be done. DeathMatching is absolutely prohibted and is");
     SendClientMessage(playerid,-1,"punishable. Let's be kind on you and help you whenever you are in need");
     SendClientMessage(playerid,-1,"of guidance. Enjoy your stay and keep roleplaying along with lots of fun");
-    SendClientMessage(playerid,-1,"If you need any help,do not hesitate in anyway to ask,type /url for LaGrande's Roleplay/RealLife Forums");
+    SendClientMessage(playerid,-1,"If you need any help,do not hesitate in anyway to ask,type /url for Servers Roleplay/RealLife Forums");
     return 1;
 }
 //==============================================================================
 CMD:cmds(playerid,params[])
 {
     if(IsJailedOrMuted(playerid))return 1;
-	SendClientMessage(playerid,YELLOW,"LaGrande's Roleplay Server Commands");
+	SendClientMessage(playerid,YELLOW,"Server Commands");
  	SendClientMessage(playerid,-1,"/eject /rpname /smoke /bag /togglecell /showlicenses /licenses /tags(on/off) /admins /weaponids");
   	SendClientMessage(playerid,-1,"/offer /acceptoffer /rejectoffer /canceloffer /car /pickup /hangup /text /w(hisper /(un)ignore");
 	SendClientMessage(playerid,-1,"/givecash /me /stats /changepass,/changename /s(hout) /buybus /sellbus /shareammo /transfer /url");
@@ -7323,7 +7323,7 @@ CMD:weaponids(playerid,params[])
 CMD:animlist(playerid,params[])
 {
 	if(IsJailedOrMuted(playerid))return 1;
-	SendClientMessage(playerid,YELLOW,"LaGrande's Roleplay Animations");
+	SendClientMessage(playerid,YELLOW,"Server Roleplay Animations");
 	SendClientMessage(playerid,-1,"/handsup /bomb /getarrested /laugh /lookout /robman /arrest /cellin /cellout /slapass");
  	SendClientMessage(playerid,-1,"/crossarms /vomit /eat /wave /taichi /relax /carjack /laydown /laugh /hi /chairsit");
   	SendClientMessage(playerid,-1,"/deal /crack /smokem /smokef /groundsit /chat /dance /f**ku /cuffed /uncuffme /drunk");
