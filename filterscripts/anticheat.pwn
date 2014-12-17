@@ -1,14 +1,133 @@
 // Anti-Cheat Guard
 // Coded by: khalifakk
-// Cheats protected: jetpack,armor,jump(bunny hop),ping
-// Version: 1.7
+// Cheats protected: jetpack,armor,jump(bunny hop),ping,swear
+// Version: 1.8
 
 #include <a_samp>
 #include <zcmd>
 
-#define MAXPINGS 1000
+#define MAXPINGS 1000 
 #define enable 0
 #define disable 1
+#define MAX_WORD_LEN 18 
+#define MAX_WORDS 122   
+#define MAX_SWEARCOUNT 5
+
+new swear[][MAX_WORD_LEN] =
+{
+	{"anus"},
+	{"arsehole"},
+	{"ass"},
+	{"bitch"},
+	{"blowjob"},
+	{"boner"},
+	{"bullshit"},
+	{"clit"},
+	{"cock"},
+	{"cum"},
+	{"cunt"},
+	{"dick"},
+	{"dildo"},
+	{"douche"},
+	{"fag"},
+	{"fellatio"},
+	{"fuck"},
+	{"fudgepacker"},
+	{"gay"},
+	{"damn"},
+	{"gooch"},
+	{"handjob"},
+	{"hard-on"},
+	{"homo"},
+	{"homodumbshit"},
+	{"humping"},
+	{"jerkoff"},
+	{"jigaboo"},
+	{"jizz"},
+	{"jungle-bunny"},
+	{"junglebunny"},
+	{"kooch"},
+	{"kootch"},
+	{"kunt"},
+	{"kyke"},
+	{"lesbian"},
+	{"lesbo"},
+	{"lezzie"},
+	{"mcfagget"},
+	{"minge"},
+	{"mothafucka"},
+	{"motherfucker"},
+	{"motherfucking"},
+	{"muff"},
+	{"muffdiver"},
+	{"munging"},
+	{"negro"},
+	{"nigga"},
+	{"niglet"},
+	{"nutsack"},
+	{"paki"},
+	{"panooch"},
+	{"pecker"},
+	{"peckerhead"},
+	{"penis"},
+	{"piss"},
+	{"polesmoker"},
+	{"pollock"},
+	{"poonani"},
+	{"porchmonkey"},
+	{"prick"},
+	{"punanny"},
+	{"punta"},
+	{"pussies"},
+	{"pussy"},
+	{"pussylicking"},
+	{"puto"},
+	{"queef"},
+	{"renob"},
+	{"rimjob"},
+	{"ruski"},
+	{"sandnigger"},
+	{"schlong"},
+	{"scrote"},
+	{"shit"},
+	{"shiz"},
+	{"shiznit"},
+	{"skank"},
+	{"skullfuck"},
+	{"slut"},
+	{"slutbag"},
+	{"smeg"},
+	{"snatch"},
+	{"tard"},
+	{"testicle"},
+	{"thundercunt"},
+	{"tit"},
+	{"twat"},
+	{"twatwaffle"},
+	{"unclefucker"},
+	{"vag"},
+	{"vagina"},
+	{"vjayjay"},
+	{"wank"},
+	{"whore"},
+	{"whorebag"},
+	{"whoreface"},
+	{"wop"},
+	{"@gmail"},
+	{"@live"},
+	{"@msn"},
+	{"@hotmail"},
+	{".de"},
+	{".cc"},
+	{"www."},
+	{".com"},
+	{".co"},
+	{".uk"},
+	{".org"},
+	{".net"},
+	{".info"},
+	{".tk"}
+};
 
 new ping[MAX_PLAYERS];
 new JetPack[MAX_PLAYERS];
@@ -26,6 +145,46 @@ public OnPlayerConnect(playerid)
 {
     JetPack[playerid] = 0;
     JoueurAppuieJump[playerid] = 0;
+	return 1;
+}
+
+new swearCount[MAX_PLAYERS];
+public OnPlayerDisconnect(playerid, reason){
+	swearCount[playerid] = 0;
+}
+public OnPlayerText(playerid, text[])
+{
+	if((strlen(text) < 3) || (text[0] == '/') || (text[0] == '#') || (text[0] == '!')) return 1;
+
+	new offset;
+	new len;
+ 	for(new i=0; i<MAX_WORDS; i++)
+	{
+		offset = strfind(text, swear[i], true);
+		if(offset > -1)
+		{
+			len = strlen(swear[i]);
+			if(len < 3) break;
+			for(new y=0; y<len; y++)
+			{
+				text[offset+y] = '*';
+			}
+			swearCount[playerid]++;
+			new string[64];
+			format(string, sizeof(string), "Swearing is not allowed here, warning %d/%d", swearCount[playerid], MAX_SWEARCOUNT);
+			SendClientMessage(playerid, 0xE60000FF, string);
+   			if(swearCount[playerid] >= MAX_SWEARCOUNT)
+			{
+			    new name[24];
+			    GetPlayerName(playerid, name, sizeof(name));
+			    format(string, sizeof(string), "*** %s has been kicked for offensive language", name);
+			    SendClientMessageToAll(0xE60000FF, string);
+			    Kick(playerid);
+			    break;
+			}
+			break;
+		}
+	}
 	return 1;
 }
 
