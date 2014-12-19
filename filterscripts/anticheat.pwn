@@ -1,7 +1,7 @@
 // Anti-Cheat Guard
 // Coded by: khalifakk
-// Cheats protected: jetpack,armor,jump(bunny hop),ping,swear
-// Version: 1.8
+// Cheats protected: jetpack,armor,jump(bunny hop),ping,swear,advertisment
+// Version: 1.9
 
 #include <a_samp>
 #include <zcmd>
@@ -154,8 +154,24 @@ public OnPlayerDisconnect(playerid, reason){
 }
 public OnPlayerText(playerid, text[])
 {
+// Advertisment protection
+if(strfind(text, ":", true) != -1)
+    {
+        new i_numcount, i_period, i_pos;
+        while(text[i_pos])
+        {
+            if('0' <= text[i_pos] <= '9') i_numcount ++;
+            else if(text[i_pos] == '.') i_period ++;
+            i_pos++;
+        }
+        if(i_numcount >= 8 && i_period >= 3)
+		{
+            return 0;
+        }
+}
+// Swear Protection
 	if((strlen(text) < 3) || (text[0] == '/') || (text[0] == '#') || (text[0] == '!')) return 1;
-
+	
 	new offset;
 	new len;
  	for(new i=0; i<MAX_WORDS; i++)
