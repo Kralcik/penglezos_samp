@@ -19,6 +19,7 @@ new swear[][MAX_WORD_LEN] =
 	{"arsehole"},
 	{"ass"},
 	{"bitch"},
+	{"biatch"},
 	{"blowjob"},
 	{"boner"},
 	{"bullshit"},
@@ -38,8 +39,9 @@ new swear[][MAX_WORD_LEN] =
 	{"gooch"},
 	{"handjob"},
 	{"hard-on"},
-	{"homo"},
-	{"homodumbshit"},
+  	{"homo"},
+    {"hoe"},
+ 	{"homodumbshit"},
 	{"humping"},
 	{"jerkoff"},
 	{"jigaboo"},
@@ -188,13 +190,13 @@ if(strfind(text, ":", true) != -1)
 			swearCount[playerid]++;
 			new string[64];
 			format(string, sizeof(string), "Swearing is not allowed here, warning %d/%d", swearCount[playerid], MAX_SWEARCOUNT);
-			SendClientMessage(playerid, 0xE60000FF, string);
+			SendClientMessage(playerid, 0xFF6347FF, string);
    			if(swearCount[playerid] >= MAX_SWEARCOUNT)
 			{
 			    new name[24];
 			    GetPlayerName(playerid, name, sizeof(name));
 			    format(string, sizeof(string), "*** %s has been kicked for offensive language", name);
-			    SendClientMessageToAll(0xE60000FF, string);
+			    SendClientMessageToAll(0xFF6347FF, string);
 			    Kick(playerid);
 			    break;
 			}
