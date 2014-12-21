@@ -757,6 +757,7 @@ new Text3D:vehicle3Dtext[MAX_VEHICLES];
 new RPName[MAX_PLAYERS][MAX_PLAYER_NAME];
 new MarriedTo[MAX_PLAYERS][MAX_PLAYER_NAME];
 new Text:Time1, Text:Date;
+new Text:TDEditor_TD[9];
 //==============================================================================
 main(){}
 //==============================================================================
@@ -781,6 +782,123 @@ public OnGameModeInit()
 	TextDrawFont(Time1,1);
 	TextDrawLetterSize(Time1,0.399999,1.600000);
 	TextDrawColor(Time1,0xffffffff);
+	
+	TDEditor_TD[0] = TextDrawCreate(-27.500000, -50.625000, "box");
+	TextDrawLetterSize(TDEditor_TD[0], 0.000000, 18.599998);
+	TextDrawTextSize(TDEditor_TD[0], 699.500000, 0.000000);
+	TextDrawAlignment(TDEditor_TD[0], 1);
+	TextDrawColor(TDEditor_TD[0], -1);
+	TextDrawUseBox(TDEditor_TD[0], 1);
+	TextDrawBoxColor(TDEditor_TD[0], 110);
+	TextDrawSetShadow(TDEditor_TD[0], 0);
+	TextDrawSetOutline(TDEditor_TD[0], 0);
+	TextDrawBackgroundColor(TDEditor_TD[0], 255);
+	TextDrawFont(TDEditor_TD[0], 1);
+	TextDrawSetProportional(TDEditor_TD[0], 1);
+	TextDrawSetShadow(TDEditor_TD[0], 0);
+
+	TDEditor_TD[1] = TextDrawCreate(193.000000, 39.062500, "Khalifakk");
+	TextDrawLetterSize(TDEditor_TD[1], 0.865500, 3.332499);
+	TextDrawAlignment(TDEditor_TD[1], 1);
+	TextDrawColor(TDEditor_TD[1], -1);
+	TextDrawSetShadow(TDEditor_TD[1], 0);
+	TextDrawSetOutline(TDEditor_TD[1], 1);
+	TextDrawBackgroundColor(TDEditor_TD[1], 255);
+	TextDrawFont(TDEditor_TD[1], 3);
+	TextDrawSetProportional(TDEditor_TD[1], 1);
+	TextDrawSetShadow(TDEditor_TD[1], 0);
+
+	TDEditor_TD[2] = TextDrawCreate(265.500000, 70.125000, "Roleplay");
+	TextDrawLetterSize(TDEditor_TD[2], 0.737999, 2.396251);
+	TextDrawAlignment(TDEditor_TD[2], 1);
+	TextDrawColor(TDEditor_TD[2], -1);
+	TextDrawSetShadow(TDEditor_TD[2], 0);
+	TextDrawSetOutline(TDEditor_TD[2], 1);
+	TextDrawBackgroundColor(TDEditor_TD[2], 255);
+	TextDrawFont(TDEditor_TD[2], 0);
+	TextDrawSetProportional(TDEditor_TD[2], 1);
+	TextDrawSetShadow(TDEditor_TD[2], 0);
+
+	TDEditor_TD[3] = TextDrawCreate(452.000000, 16.312500, "");
+	TextDrawLetterSize(TDEditor_TD[3], 0.000000, 0.000000);
+	TextDrawTextSize(TDEditor_TD[3], 60.000000, 72.062500);
+	TextDrawAlignment(TDEditor_TD[3], 1);
+	TextDrawColor(TDEditor_TD[3], -1);
+	TextDrawSetShadow(TDEditor_TD[3], 0);
+	TextDrawSetOutline(TDEditor_TD[3], 0);
+	TextDrawBackgroundColor(TDEditor_TD[3], 0);
+	TextDrawFont(TDEditor_TD[3], 5);
+	TextDrawSetProportional(TDEditor_TD[3], 1);
+	TextDrawSetShadow(TDEditor_TD[3], 0);
+	TextDrawSetPreviewModel(TDEditor_TD[3], 170);
+	TextDrawSetPreviewRot(TDEditor_TD[3], 0.000000, 0.000000, -30.000000, 1.000000);
+
+	TDEditor_TD[4] = TextDrawCreate(419.500000, 18.062500, "");
+	TextDrawLetterSize(TDEditor_TD[4], 0.000000, 0.000000);
+	TextDrawTextSize(TDEditor_TD[4], 60.000000, 72.062500);
+	TextDrawAlignment(TDEditor_TD[4], 1);
+	TextDrawColor(TDEditor_TD[4], -1);
+	TextDrawSetShadow(TDEditor_TD[4], 0);
+	TextDrawSetOutline(TDEditor_TD[4], 0);
+	TextDrawBackgroundColor(TDEditor_TD[4], 0);
+	TextDrawFont(TDEditor_TD[4], 5);
+	TextDrawSetProportional(TDEditor_TD[4], 1);
+	TextDrawSetShadow(TDEditor_TD[4], 0);
+	TextDrawSetPreviewModel(TDEditor_TD[4], 161);
+	TextDrawSetPreviewRot(TDEditor_TD[4], 0.000000, 0.000000, 30.000000, 1.000000);
+
+	TDEditor_TD[5] = TextDrawCreate(-56.000000, 312.937500, "box");
+	TextDrawLetterSize(TDEditor_TD[5], 0.000000, 18.599998);
+	TextDrawTextSize(TDEditor_TD[5], 671.000000, 0.000000);
+	TextDrawAlignment(TDEditor_TD[5], 1);
+	TextDrawColor(TDEditor_TD[5], -1);
+	TextDrawUseBox(TDEditor_TD[5], 1);
+	TextDrawBoxColor(TDEditor_TD[5], 110);
+	TextDrawSetShadow(TDEditor_TD[5], 0);
+	TextDrawSetOutline(TDEditor_TD[5], 0);
+	TextDrawBackgroundColor(TDEditor_TD[5], 255);
+	TextDrawFont(TDEditor_TD[5], 1);
+	TextDrawSetProportional(TDEditor_TD[5], 1);
+	TextDrawSetShadow(TDEditor_TD[5], 0);
+
+	TDEditor_TD[6] = TextDrawCreate(0.500000, 123.937500, "box");
+	TextDrawLetterSize(TDEditor_TD[6], 0.000000, -0.649999);
+	TextDrawTextSize(TDEditor_TD[6], 697.500000, 0.000000);
+	TextDrawAlignment(TDEditor_TD[6], 1);
+	TextDrawColor(TDEditor_TD[6], -1);
+	TextDrawUseBox(TDEditor_TD[6], 1);
+	TextDrawBoxColor(TDEditor_TD[6], 110);
+	TextDrawSetShadow(TDEditor_TD[6], 0);
+	TextDrawSetOutline(TDEditor_TD[6], 0);
+	TextDrawBackgroundColor(TDEditor_TD[6], 255);
+	TextDrawFont(TDEditor_TD[6], 1);
+	TextDrawSetProportional(TDEditor_TD[6], 1);
+	TextDrawSetShadow(TDEditor_TD[6], 0);
+
+	TDEditor_TD[7] = TextDrawCreate(-18.000000, 311.625000, "box");
+	TextDrawLetterSize(TDEditor_TD[7], 0.000000, -0.649999);
+	TextDrawTextSize(TDEditor_TD[7], 679.000000, 0.000000);
+	TextDrawAlignment(TDEditor_TD[7], 1);
+	TextDrawColor(TDEditor_TD[7], -1);
+	TextDrawUseBox(TDEditor_TD[7], 1);
+	TextDrawBoxColor(TDEditor_TD[7], 110);
+	TextDrawSetShadow(TDEditor_TD[7], 0);
+	TextDrawSetOutline(TDEditor_TD[7], 0);
+	TextDrawBackgroundColor(TDEditor_TD[7], 255);
+	TextDrawFont(TDEditor_TD[7], 1);
+	TextDrawSetProportional(TDEditor_TD[7], 1);
+	TextDrawSetShadow(TDEditor_TD[7], 0);
+
+	TDEditor_TD[8] = TextDrawCreate(8.000000, 427.562500, "www.khalifakk.info");
+	TextDrawLetterSize(TDEditor_TD[8], 0.287499, 1.315625);
+	TextDrawAlignment(TDEditor_TD[8], 1);
+	TextDrawColor(TDEditor_TD[8], -1);
+	TextDrawSetShadow(TDEditor_TD[8], 0);
+	TextDrawSetOutline(TDEditor_TD[8], 1);
+	TextDrawBackgroundColor(TDEditor_TD[8], 255);
+	TextDrawFont(TDEditor_TD[8], 1);
+	TextDrawSetProportional(TDEditor_TD[8], 1);
+	TextDrawSetShadow(TDEditor_TD[8], 0);
 //==============================================================================
 	CreateAtm(414.4580,2533.7800,16.5648,88.798);
 	CreateAtm(2159.2224,939.9501,10.8203,2.8198);
@@ -2021,11 +2139,29 @@ public OnPlayerConnect(playerid)
     RemoveBuildingForPlayer(playerid, 4229, 1597.9063, -1699.7500, 30.2109, 0.25);
     RemoveBuildingForPlayer(playerid, 4230, 1597.9063, -1699.7500, 30.2109, 0.25);
     RemoveBuildingForPlayer(playerid, 1260, 1538.5234, -1609.8047, 19.8438, 0.25);
+   	TextDrawShowForPlayer(playerid,TDEditor_TD[0]);
+    TextDrawShowForPlayer(playerid,TDEditor_TD[1]);
+    TextDrawShowForPlayer(playerid,TDEditor_TD[2]);
+    TextDrawShowForPlayer(playerid,TDEditor_TD[3]);
+    TextDrawShowForPlayer(playerid,TDEditor_TD[4]);
+	TextDrawShowForPlayer(playerid,TDEditor_TD[5]);
+    TextDrawShowForPlayer(playerid,TDEditor_TD[6]);
+    TextDrawShowForPlayer(playerid,TDEditor_TD[7]);
+    TextDrawShowForPlayer(playerid,TDEditor_TD[8]);
 	return 1;
 }
 //==============================================================================
 public OnPlayerSpawn(playerid)
 {
+    TextDrawHideForPlayer(playerid, TDEditor_TD[0]);
+    TextDrawHideForPlayer(playerid, TDEditor_TD[1]);
+    TextDrawHideForPlayer(playerid, TDEditor_TD[2]);
+    TextDrawHideForPlayer(playerid, TDEditor_TD[3]);
+    TextDrawHideForPlayer(playerid, TDEditor_TD[4]);
+    TextDrawHideForPlayer(playerid, TDEditor_TD[5]);
+    TextDrawHideForPlayer(playerid, TDEditor_TD[6]);
+    TextDrawHideForPlayer(playerid, TDEditor_TD[7]);
+    TextDrawHideForPlayer(playerid, TDEditor_TD[8]);
     TextDrawShowForPlayer(playerid, Time1), TextDrawShowForPlayer(playerid, Date);
 	if(Died[playerid]==1)
 	{
@@ -9887,6 +10023,22 @@ stock Acc(playerid)
 {
   	new x[128]; format(x,sizeof(x),"Accounts/%s.ini",PlayerName(playerid));
   	return x;
+}
+//==============================================================================
+stock ShowMNT(playerid)
+{
+    for(new i = 0; i < 9; i++)
+	{
+		TextDrawShowForPlayer(playerid, TDEditor_TD[i]);
+	}
+}
+//==============================================================================
+stock HideMNT(playerid)
+{
+	for(new i = 0; i < 9; i++)
+	{
+		TextDrawHideForPlayer(playerid, TDEditor_TD[i]);
+	}
 }
 //==============================================================================
 stock CStats(playerid)
