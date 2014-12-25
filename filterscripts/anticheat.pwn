@@ -1,16 +1,16 @@
 // Anti-Cheat Guard
 // Coded by: khalifakk
-// Cheats protected: jetpack,armor,jump(bunny hop),ping,swear,advertisment,airbrake(teleport)
-// Version: 2.0
+// Cheats protected: jetpack,armor,jump(bunny hop),ping,swear,advertisment
+// Version: 1.9
 
 #include <a_samp>
 #include <zcmd>
 
-#define MAXPINGS 1000 
+#define MAXPINGS 1000
 #define enable 0
 #define disable 1
-#define MAX_WORD_LEN 18 
-#define MAX_WORDS 122   
+#define MAX_WORD_LEN 18
+#define MAX_WORDS 122
 #define MAX_SWEARCOUNT 5
 
 new swear[][MAX_WORD_LEN] =
@@ -118,7 +118,7 @@ new swear[][MAX_WORD_LEN] =
 	{"@gmail"},
 	{"@live"},
 	{"@msn"},
-	{"@hot	mail"},
+	{"@hotmail"},
 	{".de"},
 	{".cc"},
 	{"www."},
@@ -135,31 +135,12 @@ new ping[MAX_PLAYERS];
 new JetPack[MAX_PLAYERS];
 new LastArmour[MAX_PLAYERS];
 new JoueurAppuieJump[MAX_PLAYERS];
-new Float:xo[MAX_PLAYERS],Float:yo[MAX_PLAYERS],Float:zo[MAX_PLAYERS];
-new timerantiairbrk[MAX_PLAYERS];
-forward antiairbrk(playerid);
-
-AntiDeAMX()
-{
-   new a[][] =
-   {
-      "Unarmed (Fist)",
-      "Brass K"
-   };
-   #pragma unused a
-}
 
 public OnFilterScriptInit()
 {
 	print("\n------------------------------------------------------");
 	print(" Anti-Cheat Guard by khalifakk                          ");
 	print("------------------------------------------------------\n");
-}
-
-public OnPlayerSpawn(playerid)
-{
-    timerantiairbrk[playerid] = SetTimerEx("antiairbrk", 100, true, "i", playerid);
-	return 1;
 }
 
 public OnPlayerConnect(playerid)
@@ -169,135 +150,9 @@ public OnPlayerConnect(playerid)
 	return 1;
 }
 
-public OnPlayerDeath(playerid, killerid, reason)
-{
-    xo[playerid] = 0.0;
-	yo[playerid] = 0.0;
-	zo[playerid] = 0.0;
-	KillTimer(timerantiairbrk[playerid]);
-	return 1;
-}
-
-public OnPlayerEnterCheckpoint(playerid)
-{
-    xo[playerid] = 0.0;
-	yo[playerid] = 0.0;
-	zo[playerid] = 0.0;
-	return 1;
-}
-
-public OnPlayerLeaveCheckpoint(playerid)
-{
-    xo[playerid] = 0.0;
-	yo[playerid] = 0.0;
-	zo[playerid] = 0.0;
-	return 1;
-}
-
-public OnPlayerEnterRaceCheckpoint(playerid)
-{
-    xo[playerid] = 0.0;
-	yo[playerid] = 0.0;
-	zo[playerid] = 0.0;
-	return 1;
-}
-
-public OnPlayerLeaveRaceCheckpoint(playerid)
-{
-    xo[playerid] = 0.0;
-	yo[playerid] = 0.0;
-	zo[playerid] = 0.0;
-	return 1;
-}
-
-public OnPlayerPickUpPickup(playerid, pickupid)
-{
-    xo[playerid] = 0.0;
-	yo[playerid] = 0.0;
-	zo[playerid] = 0.0;
-	return 1;
-}
-
-public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
-{
-    xo[playerid] = 0.0;
-	yo[playerid] = 0.0;
-	zo[playerid] = 0.0;
-	return 1;
-}
-
-public OnPlayerClickPlayer(playerid, clickedplayerid, source)
-{
-    xo[playerid] = 0.0;
-	yo[playerid] = 0.0;
-	zo[playerid] = 0.0;
-	return 1;
-}
-
-stock IsPlayerInAirPlane(vehicleid)
-{
-  switch(GetVehicleModel(vehicleid))
-  {
-    case
-        460,464,476,511,512,513,519,520,553,577,592,593,//flying vehicle models
-        417,425,447,465,469,487,488,497,501,548,563:
-    return true;
-  }
-  return false;
-}
-
-stock Float:GetPlayerMoveCount(Float:oldd,Float:neww)
-{
-	new Float:ret;
-	if(oldd < neww)
-	{
-		ret = neww - oldd;//tag mismatch
-	}
-	else if(neww > oldd)
-	{
-	    ret = oldd - neww;//tag mismatch
-	}
-	else if(neww == oldd)
-	{
-	    ret = 0;
-	}
-	return ret;
-}
-
-public antiairbrk(playerid)
-{
-	new Float:xt,Float:yt,Float:zt;
-	GetPlayerPos(playerid,xt,yt,zt);
-    if(!IsPlayerInAirPlane(playerid))
-    {
-        if(xo[playerid] != 0.0 || yo[playerid] != 0.0 || zo[playerid] != 0.0)
-        {
-            new Float:xs,Float:ys,Float:zs;
-            xs = GetPlayerMoveCount(xo[playerid],xt);
-            ys = GetPlayerMoveCount(yo[playerid],yt);
-            zs = GetPlayerMoveCount(zo[playerid],zt);
-            if(xs >= 16.5 || ys >= 16.5 || zs >= 16.5)
-            {
-                if(xs <= 50.0)
-                {
-                	new string[128], targetid;
-                 	format(string, sizeof(string), "[Anti-Cheat]: %s has been banned for using jetpack hacks ",GetName(targetid));
-                 	SendClientMessageToAll(-1, string);
-     	            print(string);
-                	Kick(playerid);
-				}
-            }
-        }
-    }
-    GetPlayerPos(playerid,xo[playerid],yo[playerid],zo[playerid]);
-	return 1;
-}
-
 new swearCount[MAX_PLAYERS];
 public OnPlayerDisconnect(playerid, reason){
 	swearCount[playerid] = 0;
-    KillTimer(timerantiairbrk[playerid]);
-	return 1;
 }
 public OnPlayerText(playerid, text[])
 {
@@ -318,7 +173,7 @@ if(strfind(text, ":", true) != -1)
 }
 // Swear Protection
 	if((strlen(text) < 3) || (text[0] == '/') || (text[0] == '#') || (text[0] == '!')) return 1;
-	
+
 	new offset;
 	new len;
  	for(new i=0; i<MAX_WORDS; i++)
