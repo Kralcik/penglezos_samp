@@ -1,5 +1,5 @@
 // Anti-Cheat Guard
-// Coded by: khalifakk
+// Coded by: panagiotisegl
 // Cheats protected: jetpack,armor,jump(bunny hop),ping,swear,advertisment
 // Version: 1.9
 
@@ -139,7 +139,7 @@ new JoueurAppuieJump[MAX_PLAYERS];
 public OnFilterScriptInit()
 {
 	print("\n------------------------------------------------------");
-	print(" Anti-Cheat Guard by khalifakk                          ");
+	print(" Anti-Cheat Guard by panagiotisegl                      ");
 	print("------------------------------------------------------\n");
 }
 
