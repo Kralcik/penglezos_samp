@@ -1,7 +1,7 @@
 // Anti-Cheat Guard
 // Coded by: panagiotisegl
-// Cheats protected: jetpack,armor,jump(bunny hop),ping,swear,advertisment
-// Version: 1.9
+// Cheats protected: jetpack,armor,ping,swear,advertisment
+// Version: 2.0
 
 #include <a_samp>
 #include <zcmd>
@@ -134,7 +134,6 @@ new swear[][MAX_WORD_LEN] =
 new ping[MAX_PLAYERS];
 new JetPack[MAX_PLAYERS];
 new LastArmour[MAX_PLAYERS];
-new JoueurAppuieJump[MAX_PLAYERS];
 
 public OnFilterScriptInit()
 {
@@ -146,7 +145,6 @@ public OnFilterScriptInit()
 public OnPlayerConnect(playerid)
 {
     JetPack[playerid] = 0;
-    JoueurAppuieJump[playerid] = 0;
 	return 1;
 }
 
@@ -249,36 +247,6 @@ if(ping[playerid] != disable)
             return 1;
     }
     else JetPack[playerid] = 0;
-    return 1;
-}
-// Jump (bunny hop) protection
-forward AppuieJump(playerid);
-public AppuieJump(playerid)
-{
-    JoueurAppuieJump[playerid] = 0;
-    ClearAnimations(playerid);
-    return 1;
-}
-forward AppuiePasJump(playerid);
-public AppuiePasJump(playerid)
-{
-    JoueurAppuieJump[playerid] = 0;
-    return 1;
-}
-public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
-{
-	if((newkeys & KEY_JUMP) && !IsPlayerInAnyVehicle(playerid))
-    {
-        JoueurAppuieJump[playerid] ++;
-        SetTimerEx("AppuiePasJump", 900, false, "i", playerid);
-
-        if(JoueurAppuieJump[playerid] == 2)
-        {
-            ApplyAnimation(playerid, "PED", "BIKE_fall_off", 4.1, 0, 1, 1, 1, 0, 1);
-			GameTextForPlayer(playerid,"~r~Illegal~w~ Action",3000,0);
-			SetTimerEx("AppuieJump", 1100, false, "i", playerid);
-        }
-    }
     return 1;
 }
 
