@@ -767,7 +767,7 @@ public OnGameModeInit()
     ShowPlayerMarkers(0);
     EnableStuntBonusForAll(0);
    	ManualVehicleEngineAndLights();
-	SetGameModeText("KK Roleplay | Real Life");
+	SetGameModeText("Egl Roleplay | Real Life");
     SetTimer("settime",1000,true);
     SetTimer("Messages", 900000, true); // 15 Minutes
 
