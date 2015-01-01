@@ -764,7 +764,7 @@ main(){}
 public OnGameModeInit()
 {
     CreateTextdraws();
-    ShowPlayerMarkers(0);
+    ShowPlayerMarkers(1);
     EnableStuntBonusForAll(0);
    	ManualVehicleEngineAndLights();
 	SetGameModeText("Egl Roleplay | Real Life");
