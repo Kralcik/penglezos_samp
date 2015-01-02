@@ -88,6 +88,7 @@
 #define MAX_ORG_VEHICLES 		10
 #define MAX_Zone_PER_ORG 		10
 #define MAX_ZONE_NAME       	40
+#define dcmd(%1,%2,%3) if (!strcmp((%3)[1], #%1, true, (%2)) && ((((%3)[(%2) + 1] == '\0') && (dcmd_%1(playerid, ""))) || (((%3)[(%2) + 1] == ' ') && (dcmd_%1(playerid, (%3)[(%2) + 2]))))) return 1
 //==============================================================================
 enum Awards
 {
@@ -109,6 +110,11 @@ enum Awards
 	Suicide,
 	AirPlane,
     Gangster,
+};
+enum PlayerInfo
+{
+	Last,
+	NoPM,
 };
 enum AInfo
 {
@@ -758,6 +764,7 @@ new RPName[MAX_PLAYERS][MAX_PLAYER_NAME];
 new MarriedTo[MAX_PLAYERS][MAX_PLAYER_NAME];
 new Text:Time1, Text:Date;
 new Text:TDEditor_TD[9];
+new pInfo[MAX_PLAYERS][PlayerInfo];
 //==============================================================================
 main(){}
 //==============================================================================
@@ -2231,6 +2238,8 @@ public OnPlayerConnect(playerid)
     TextDrawShowForPlayer(playerid,TDEditor_TD[6]);
     TextDrawShowForPlayer(playerid,TDEditor_TD[7]);
     TextDrawShowForPlayer(playerid,TDEditor_TD[8]);
+    pInfo[playerid][Last] = -1;
+	pInfo[playerid][NoPM] = 0;
 	return 1;
 }
 //==============================================================================
@@ -2476,6 +2485,8 @@ public OnPlayerDisconnect(playerid,reason)
     }
     SStats(playerid);
     IsLogged[playerid]=0;
+    pInfo[playerid][Last] = -1;
+	pInfo[playerid][NoPM] = 0;
 	Delete3DTextLabel(Label[playerid]);
 	DestroyVehicle(License[playerid][Vehicle]);
 	if(Car[playerid]>0){DestroyVehicle(Car[playerid]);}
@@ -5229,6 +5240,7 @@ CMD:cmds(playerid,params[])
 	SendClientMessage(playerid,-1,"/bribe /usedrugs /atm /help /payorg /fuelcan /sellprop /request /getweapon /saveweapon /weapons");
     SendClientMessage(playerid,-1,"/handweapon /carloc /call(911) /tosscoin /awards /t(alk)(anim) /ignorelist /buyprop /myskin /do");
    	SendClientMessage(playerid,-1,"OTHERS: /repair /bank /ocmds /propose /divorce /acceptproposal /withdraw /deposit");
+   	SendClientMessage(playerid,-1,"MESSAGING: /pm or /m , /reply or /r , /nopm");
 	if(VIP[playerid]>0)
 	{
 		SendClientMessage(playerid,-1,"PREMIUM ACCOUNT: /carcolor /changeskin /changecar /weather /nos /nzt");
@@ -5249,6 +5261,59 @@ CMD:god(playerid,params[])
 	}
 	return 1;
 }
+//==============================================================================
+CMD:nopm(playerid, params[])
+{
+	#pragma unused params
+	if(pInfo[playerid][NoPM] == 0)
+	{
+	    pInfo[playerid][NoPM] = 1;
+	    SendClientMessage(playerid, YELLOW, "You are no longer accepting private messages.");
+	    return 1;
+	}
+	else
+	{
+	    pInfo[playerid][NoPM] = 0;
+	    SendClientMessage(playerid, YELLOW, "You are now accepting private messages.");
+	    return 1;
+	}
+}
+//==============================================================================
+CMD:pm(playerid, params[])
+{
+	new pID, text[128], string[128];
+	if(sscanf(params, "us", pID, text)) return SendClientMessage(playerid, RED, "USAGE: /pm (nick/id) (message) - Enter a valid Nick / ID");
+	if(!IsPlayerConnected(pID)) return SendClientMessage(playerid, RED, "Player is not connected.");
+	if(pID == playerid) return SendClientMessage(playerid, RED, "You cannot PM yourself.");
+	format(string, sizeof(string), "%s (%d) is not accepting private messages at the moment.", PlayerName(pID), pID);
+	if(pInfo[pID][NoPM] == 1) return SendClientMessage(playerid, RED, string);
+	format(string, sizeof(string), "PM to %s: %s", PlayerName(pID), text);
+	SendClientMessage(playerid, YELLOW, string);
+	format(string, sizeof(string), "PM from %s: %s", PlayerName(playerid), text);
+	SendClientMessage(pID, YELLOW, string);
+	pInfo[pID][Last] = playerid;
+	return 1;
+}
+//==============================================================================
+CMD:reply(playerid, params[])
+{
+	new text[128], string[128];
+	if(sscanf(params, "s", text)) return SendClientMessage(playerid, RED, "USAGE: /reply (message) - Enter your message");
+	new pID = pInfo[playerid][Last];
+	if(!IsPlayerConnected(pID)) return SendClientMessage(playerid, RED, "Player is not connected.");
+	if(pID == playerid) return SendClientMessage(playerid, RED, "You cannot PM yourself.");
+	format(string, sizeof(string), "%s (%d) is not accepting private messages at the moment.", PlayerName(pID), pID);
+	if(pInfo[pID][NoPM] == 1) return SendClientMessage(playerid, RED, string);
+	format(string, sizeof(string), "PM to %s: %s", PlayerName(pID), text);
+	SendClientMessage(playerid, YELLOW, string);
+	format(string, sizeof(string), "PM from %s: %s", PlayerName(playerid), text);
+	SendClientMessage(pID, YELLOW, string);
+	pInfo[pID][Last] = playerid;
+	return 1;
+}
+//==============================================================================
+CMD:m(playerid, params[]) return cmd_pm(playerid, params);
+CMD:r(playerid, params[]) return cmd_reply(playerid, params);
 //==============================================================================
 CMD:car(playerid,params[])
 {
