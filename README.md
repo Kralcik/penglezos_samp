@@ -14,7 +14,6 @@ Goal:
 
 TODO:
 - Death problem (no teleport)
-- Pm system
 - Typos on gm
 - Account system save score
 - Player marks on map
