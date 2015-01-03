@@ -638,6 +638,7 @@ new paintball;
 new RPCars[3];
 new bloodringe;
 new textdraw=0;
+new globaltimer;
 new PropertyCount;
 new BusinessCount;
 new Text:Textdraw1;
@@ -775,6 +776,7 @@ public OnGameModeInit()
     EnableStuntBonusForAll(0);
    	ManualVehicleEngineAndLights();
 	SetGameModeText("Egl Roleplay | Real Life");
+	globaltimer=SetTimer("Global",1300,true);
     SetTimer("settime",1000,true);
     SetTimer("Messages", 900000, true); // 15 Minutes
 
@@ -2198,6 +2200,7 @@ public OnGameModeInit()
 public OnGameModeExit()
 {
 	SaveOrg();
+	KillTimer(globaltimer);
 	return 1;
 }
 //==============================================================================
@@ -9019,6 +9022,7 @@ CMD:gmx(playerid,params[])
 			SaveOrg();
 			SStats(i);
 			CStats(i);
+			KillTimer(globaltimer);
 			SendClientMessage(i,RED,"An Administrator has restarted the server");
 			SendClientMessage(i,RED,"Please wait till the server restarts,and then you may continue playing");
 		}
