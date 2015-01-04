@@ -761,7 +761,6 @@ new PlayerAwards[MAX_PLAYERS][Awards];
 new Text3D:vehicle3Dtext[MAX_VEHICLES];
 new RPName[MAX_PLAYERS][MAX_PLAYER_NAME];
 new MarriedTo[MAX_PLAYERS][MAX_PLAYER_NAME];
-new Text:Time1, Text:Date;
 new Text:TDEditor_TD[9];
 new pInfo[MAX_PLAYERS][PlayerInfo];
 //==============================================================================
@@ -775,21 +774,8 @@ public OnGameModeInit()
    	ManualVehicleEngineAndLights();
 	SetGameModeText("Egl Roleplay | Real Life");
 	globaltimer=SetTimer("Global",1300,true);
-    SetTimer("settime",1000,true);
     SetTimer("Messages", 900000, true); // 15 Minutes
-
-	Date = TextDrawCreate(547.000000,11.000000,"--");
-
-	TextDrawFont(Date,3);
-	TextDrawLetterSize(Date,0.399999,1.600000);
-    TextDrawColor(Date,0xffffffff);
-
-	Time1 = TextDrawCreate(547.000000,28.000000,"--");
-
-	TextDrawFont(Time1,1);
-	TextDrawLetterSize(Time1,0.399999,1.600000);
-	TextDrawColor(Time1,0xffffffff);
-	
+    
 	TDEditor_TD[0] = TextDrawCreate(-27.500000, -50.625000, "box");
 	TextDrawLetterSize(TDEditor_TD[0], 0.000000, 18.599998);
 	TextDrawTextSize(TDEditor_TD[0], 699.500000, 0.000000);
@@ -2207,6 +2193,7 @@ public OnPlayerConnect(playerid)
 	new string[128];
 	CStats(playerid);
 	LoadStats(playerid);
+	TogglePlayerClock(playerid,1);
 	TextDrawAlignment(Zones[playerid],2);
 	TextDrawSetOutline(Zones[playerid],1);
 	TextDrawAlignment(td_fuel[playerid],3);
@@ -2255,7 +2242,6 @@ public OnPlayerSpawn(playerid)
     TextDrawHideForPlayer(playerid, TDEditor_TD[6]);
     TextDrawHideForPlayer(playerid, TDEditor_TD[7]);
     TextDrawHideForPlayer(playerid, TDEditor_TD[8]);
-    TextDrawShowForPlayer(playerid, Time1), TextDrawShowForPlayer(playerid, Date);
 	if(Died[playerid]==1)
 	{
 	    Died[playerid]=0;
@@ -2422,17 +2408,6 @@ public OnPlayerDeath(playerid,killerid,reason)
  	return 1;
 }
 //==============================================================================
-forward settime(playerid);
-public settime(playerid)
-{
-	new string[256],year,month,day,hours,minutes,seconds;
-	getdate(year, month, day), gettime(hours, minutes, seconds);
-	format(string, sizeof string, "%d/%s%d/%s%d", day, ((month < 10) ? ("0") : ("")), month, (year < 10) ? ("0") : (""), year);
-	TextDrawSetString(Date, string);
-	format(string, sizeof string, "%s%d:%s%d:%s%d", (hours < 10) ? ("0") : (""), hours, (minutes < 10) ? ("0") : (""), minutes, (seconds < 10) ? ("0") : (""), seconds);
-	TextDrawSetString(Time1, string);
-}
-//==============================================================================
 forward Messages();
 
 new Message[][] =
@@ -2449,7 +2424,6 @@ public Messages()
 //==============================================================================
 public OnPlayerDisconnect(playerid,reason)
 {
-    TextDrawHideForPlayer(playerid, Time1), TextDrawHideForPlayer(playerid, Date);
     new string[50];
     switch(reason)
     {
