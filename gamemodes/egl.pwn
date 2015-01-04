@@ -663,7 +663,6 @@ new NZT[MAX_PLAYERS];
 new PID[MAX_PLAYERS];
 new Car[MAX_PLAYERS];
 new BID[MAX_PLAYERS];
-new TAFK[MAX_PLAYERS];
 new Died[MAX_PLAYERS];
 new ACar[MAX_PLAYERS];
 new Keys[MAX_PLAYERS];
@@ -757,7 +756,6 @@ new SavedAmmos[MAX_PLAYERS][5];
 new Organization[MAX_ORGS][Orgs];
 new bool:Weapons[MAX_PLAYERS][47];
 new License[MAX_PLAYERS][license];
-new Float:positions[MAX_PLAYERS][6];
 new Ignore[MAX_PLAYERS][MAX_PLAYERS];
 new PlayerAwards[MAX_PLAYERS][Awards];
 new Text3D:vehicle3Dtext[MAX_VEHICLES];
@@ -2300,7 +2298,6 @@ public OnPlayerSpawn(playerid)
 	    SendClientMessage(playerid,LRED,"/guide for a short tutorial/guide to the server. Enjoy your stay!");
 	}
 	ClearAnimations(playerid);
-	TAFK[playerid]=gettime()+300;
 	TextDrawShowForPlayer(playerid,Textdraw1);
 	TextDrawShowForPlayer(playerid,Textdraw2);
 	TextDrawShowForPlayer(playerid,Textdraw3);
@@ -10212,7 +10209,6 @@ stock CStats(playerid)
 	Car[playerid]=0;
 	BID[playerid]=0;
 	aid[playerid]=-1;
-	TAFK[playerid]=0;
 	Died[playerid]=0;
 	ACar[playerid]=0;
 	Keys[playerid]=0;
@@ -10710,35 +10706,6 @@ stock Second()
 			if(Kicked[playerid]==1)
 			{
 			    Kick(playerid);
-			}
-			if(TAFK[playerid]>0&&gettime()>TAFK[playerid])
-			{
-    			GetPlayerPos(playerid,positions[playerid][0],positions[playerid][1],positions[playerid][2]);
-				if(positions[playerid][0]==positions[playerid][3] && positions[playerid][1]==positions[playerid][4] && positions[playerid][2]==positions[playerid][5])
-    			{
-	 				format(string,sizeof(string),"%s has been kicked from the server for inactivity",PlayerName(playerid));
-					TogglePlayerControllable(playerid,false);
-					SendClientMessageToAll(-1,string);
-					SetCameraBehindPlayer(playerid);
-				  	if(PlayerAwards[playerid][Abooze]==0)
-					{
-						PlayerAwards[playerid][Abooze]=1;
-						GivePlayerMoneyEx(playerid,1000);
-						GamerScore[playerid]=GamerScore[playerid]+90;
-						SendClientMessage(playerid,YELLOW,"Achievement Unlocked: {FFFFFF}Ab00ze!");
-						SendClientMessage(playerid,LGREEN,"BONUS: $1000 || +90 Gamer Score");
-					}
-	    			Kicked[playerid]=1;
-    				return 1;
-				}
-				else
-				{
-			 	   	positions[playerid][3]=positions[playerid][0];
-					positions[playerid][4]=positions[playerid][1];
-					positions[playerid][5]=positions[playerid][2];
-		    		TAFK[playerid]=gettime()+300;
-		    		return 1;
-				}
 			}
 		}
 	}
