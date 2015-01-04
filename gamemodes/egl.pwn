@@ -5203,47 +5203,47 @@ public Global()
 CMD:rules(playerid,params[])
 {
 	if(IsJailedOrMuted(playerid))return 1;
-    SendClientMessage(playerid,YELLOW,"-Server Rules-");
-    SendClientMessage(playerid,-1,"1. The main chat is supposed to be complete OOC chat.");
-    SendClientMessage(playerid,-1,"2. If you own a property or a business or both,and go inactive");
-    SendClientMessage(playerid,-1,"for a time period of more than 7 days,your business and property");
-    SendClientMessage(playerid,-1,"will be resetted as a result.");
-    SendClientMessage(playerid,-1,"3. No admin is supposed to use any admin command while roleplaying");
-    SendClientMessage(playerid,-1,"for self benefits.");
-    SendClientMessage(playerid,-1,"4. The /rpname tag means that you are in character,and any non-rpish");
-    SendClientMessage(playerid,-1,"act will either get you banned or kicked from server or an organization.");
-    SendClientMessage(playerid,-1,"5. Any usage of third party tools for self-benefit will get you banned.");
+    new stringtwo[1024];
+    strcat(stringtwo,"1. The main chat is supposed to be complete OOC chat.\n",sizeof(stringtwo));
+    strcat(stringtwo,"2. Spamming or advertisment is not allowed.\n",sizeof(stringtwo));
+    strcat(stringtwo,"3. This is not a Death Match server , so dont kill anyone with no reason.\n",sizeof(stringtwo));
+    strcat(stringtwo,"4. Swearing is not allowed.\n",sizeof(stringtwo));
+    strcat(stringtwo,"5. Respect Admins and other players.\n",sizeof(stringtwo));
+    strcat(stringtwo,"6. Any usage of third party tools for self-benefit will get you banned.\n",sizeof(stringtwo));
+    ShowPlayerDialog(playerid,1061,DIALOG_STYLE_MSGBOX,"Server Rules",stringtwo,"Ok","");
 	return 1;
 }
 //==============================================================================
 CMD:help(playerid,params[])
 {
-	if(IsJailedOrMuted(playerid))return 1;
-    SendClientMessage(playerid,YELLOW,"Server Help");
-    SendClientMessage(playerid,-1,"The main objective of the server is to RolePlay");
-    SendClientMessage(playerid,-1,"RolePlay is quite similiar to acting,you act and");
-    SendClientMessage(playerid,-1,"pretend to be that person. On the other hand you can");
-    SendClientMessage(playerid,-1,"Feel free to walk and talk wherever you go and roam around");
-    SendClientMessage(playerid,-1,"Stay on the server for awhile and eventually you will get the feeling");
-    SendClientMessage(playerid,-1,"Of what has to be done. DeathMatching is absolutely prohibted and is");
-    SendClientMessage(playerid,-1,"punishable. Let's be kind on you and help you whenever you are in need");
-    SendClientMessage(playerid,-1,"of guidance. Enjoy your stay and keep roleplaying along with lots of fun");
-    SendClientMessage(playerid,-1,"If you need any help,do not hesitate in anyway to ask,type /url for Servers Roleplay/RealLife Forums");
+    new stringtwo[1024];
+    strcat(stringtwo,"The main objective of the server is to RolePlay\n",sizeof(stringtwo));
+    strcat(stringtwo,"RolePlay is quite similiar to acting,you act and\n",sizeof(stringtwo));
+    strcat(stringtwo,"pretend to be that person. On the other hand you can\n",sizeof(stringtwo));
+    strcat(stringtwo,"Feel free to walk and talk wherever you go and roam around\n",sizeof(stringtwo));
+    strcat(stringtwo,"Stay on the server for awhile and eventually you will get the feeling\n",sizeof(stringtwo));
+    strcat(stringtwo,"Of what has to be done. DeathMatching is absolutely prohibted and is\n",sizeof(stringtwo));
+    strcat(stringtwo,"punishable. Let's be kind on you and help you whenever you are in need\n",sizeof(stringtwo));
+    strcat(stringtwo,"of guidance. Enjoy your stay and keep roleplaying along with lots of fun\n",sizeof(stringtwo));
+    strcat(stringtwo,"If you need any help,do not hesitate in anyway to ask,type /url for Servers Roleplay/RealLife Forums\n",sizeof(stringtwo));
+    ShowPlayerDialog(playerid,1061,DIALOG_STYLE_MSGBOX,"Server Help",stringtwo,"Ok","");
     return 1;
 }
 //==============================================================================
 CMD:cmds(playerid,params[])
 {
     if(IsJailedOrMuted(playerid))return 1;
-	SendClientMessage(playerid,YELLOW,"Server Commands");
- 	SendClientMessage(playerid,-1,"/eject /rpname /smoke /bag /togglecell /showlicenses /licenses /tags(on/off) /admins /weaponids");
-  	SendClientMessage(playerid,-1,"/offer /acceptoffer /rejectoffer /canceloffer /car /pickup /hangup /text /w(hisper /(un)ignore");
-	SendClientMessage(playerid,-1,"/givecash /me /stats /changepass,/changename /s(hout) /buybus /sellbus /shareammo /transfer /url");
-	SendClientMessage(playerid,-1,"/rules /buyskin /animlist /report /(un)lock  /refuel /autolock /music /showmarks /guide /helmet");
-	SendClientMessage(playerid,-1,"/bribe /usedrugs /atm /help /payorg /fuelcan /sellprop /request /getweapon /saveweapon /weapons");
-    SendClientMessage(playerid,-1,"/handweapon /carloc /call(911) /tosscoin /awards /t(alk)(anim) /ignorelist /buyprop /myskin /do");
-   	SendClientMessage(playerid,-1,"OTHERS: /repair /bank /ocmds /propose /divorce /acceptproposal /withdraw /deposit");
-   	SendClientMessage(playerid,-1,"MESSAGING: /pm or /m , /reply or /r , /nopm");
+    new stringtwo[1024];
+    strcat(stringtwo,"/eject /rpname /smoke /bag /togglecell /showlicenses /licenses /tags(on/off) /admins /weaponids\n",sizeof(stringtwo));
+    strcat(stringtwo,"/offer /acceptoffer /rejectoffer /canceloffer /car /pickup /hangup /text /w(hisper /(un)ignore\n",sizeof(stringtwo));
+    strcat(stringtwo,"/givecash /me /stats /changepass,/changename /s(hout) /buybus /sellbus /shareammo /transfer /url\n",sizeof(stringtwo));
+    strcat(stringtwo,"/rules /buyskin /animlist /report /(un)lock  /refuel /autolock /music /showmarks /guide /helmet\n",sizeof(stringtwo));
+    strcat(stringtwo,"/bribe /usedrugs /atm /help /payorg /fuelcan /sellprop /request /getweapon /saveweapon /weapons\n",sizeof(stringtwo));
+    strcat(stringtwo,"/handweapon /carloc /call(911) /tosscoin /awards /t(alk)(anim) /ignorelist /buyprop /myskin /do\n",sizeof(stringtwo));
+    strcat(stringtwo,"OTHERS: /repair /bank /ocmds /propose /divorce /acceptproposal /withdraw /deposit\n",sizeof(stringtwo));
+    strcat(stringtwo,"MESSAGING: /pm or /m , /reply or /r , /nopm\n",sizeof(stringtwo));
+    ShowPlayerDialog(playerid,1061,DIALOG_STYLE_MSGBOX,"Server Commands",stringtwo,"Ok","");
+    
 	if(VIP[playerid]>0)
 	{
 		SendClientMessage(playerid,-1,"PREMIUM ACCOUNT: /carcolor /changeskin /changecar /weather /nos /nzt");
@@ -5824,19 +5824,16 @@ CMD:acmds(playerid,params[])
 	if(AdminLevel[playerid]==0)return 0;
 	if(AdminLevel[playerid] >=1)
 	{
-		SendClientMessage(playerid,YELLOW,"Administrator LEVEL 1: {FFFFFF}/a /vips /unbug /carcolor /cellnumbers /ann /mute /getweaps /stats [id]");
-		SendClientMessage(playerid,YELLOW,"Administrator LEVEL 1: {FFFFFF}/slap /disarm /explode /freeze /unfreeze /kick /unmute /nos /kill /god /star /stopsevent");
-	}
-	if(AdminLevel[playerid] >=2)
-	{
-		SendClientMessage(playerid,0x1344ECFF,"Administrator LEVEL 2: {FFFFFF}/setweather /tp /checkcash /goto /get /specoff /spec /sethealth /setarmor /registered");
-		SendClientMessage(playerid,0x1344ECFF,"Administrator LEVEL 2: {FFFFFF}/repair /hide /cc /unban /vrespawn /refuelall /ban /flip /lastactive /god /star /stopsevent");
-	}
-	if(AdminLevel[playerid] >=3)
-	{
-        SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/givelicenses /v /getip /setskin /setcash /transfercash /setscore /teletohq /fuck");
-        SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/resetcar /wipeorg /setleader /setdrugs /givegun /skydive /setskills /crash");
-		SendClientMessage(playerid,RED,"Administrator LEVEL 3: {FFFFFF}/setvip /sethours /setteacher /payday /a(un)jail /banreason /gmx /say /god /star /stopsevent");
+	new stringtwo[1024];
+    strcat(stringtwo,"Administrator LEVEL 1: /a /vips /unbug /carcolor /cellnumbers /ann /mute /getweaps /stats [id]\n",sizeof(stringtwo));
+    strcat(stringtwo,"Administrator LEVEL 1: /slap /disarm /explode /freeze /unfreeze /kick /unmute /nos /kill /god /star /stopsevent\n",sizeof(stringtwo));
+    strcat(stringtwo,"Administrator LEVEL 2: /setweather /tp /checkcash /goto /get /specoff /spec /sethealth /setarmor /registered\n",sizeof(stringtwo));
+    strcat(stringtwo,"Administrator LEVEL 2: /repair /hide /cc /unban /vrespawn /refuelall /ban /flip /lastactive /god /star /stopsevent\n",sizeof(stringtwo));
+    strcat(stringtwo,"Administrator LEVEL 3: /givelicenses /v /getip /setskin /setcash /transfercash /setscore /teletohq /fuck\n",sizeof(stringtwo));
+    strcat(stringtwo,"Administrator LEVEL 3: /resetcar /wipeorg /setleader /setdrugs /givegun /skydive /setskills /crash\n",sizeof(stringtwo));
+    strcat(stringtwo,"Administrator LEVEL 3: /setvip /sethours /setteacher /payday /a(un)jail /banreason /gmx /say /god /star /stopsevent\n",sizeof(stringtwo));
+    strcat(stringtwo,"NOTE: {FFFFFF} In case you are lower level some commands might dont work!\n",sizeof(stringtwo));
+    ShowPlayerDialog(playerid,1061,DIALOG_STYLE_MSGBOX,"Admin Commands",stringtwo,"Ok","");
 	}
 	return 1;
 }
