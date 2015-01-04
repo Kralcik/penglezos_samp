@@ -21,4 +21,6 @@ TODO:
 - Afk system & kick
 - House system
 - Vehicle system
+- Jail system
+- Ammunation teleport bug
 
