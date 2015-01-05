@@ -16,9 +16,6 @@ TODO:
 - Death problem (no teleport)
 - Typos on gm
 - Account system save score
-- Player marks on map
-- Showroom bugs
-- Afk system & kick
 - House system
 - Vehicle system
 - Jail system
