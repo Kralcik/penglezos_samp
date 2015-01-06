@@ -17,6 +17,5 @@ TODO:
 - Typos on gm
 - Account system save score
 - House system
-- Vehicle system
 - Jail system typo
 
