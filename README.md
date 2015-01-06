@@ -13,7 +13,6 @@ Goal:
 - Bugless gameplay 
 
 TODO:
-- Typos on gm
 - Account system save score
 - House system
 - Jail system typo
