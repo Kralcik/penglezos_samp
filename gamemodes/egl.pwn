@@ -2397,7 +2397,6 @@ public OnPlayerDeath(playerid,killerid,reason)
     SetPlayerInterior(playerid,0);
 	ResetPlayerWeaponsEx(playerid);
     SetPlayerVirtualWorld(playerid,0);
-	SetPlayerSkin(playerid,Skin[playerid]);
     TextDrawHideForPlayer(playerid,Textdraw1);
     TextDrawHideForPlayer(playerid,Textdraw2);
     TextDrawHideForPlayer(playerid,Textdraw3);

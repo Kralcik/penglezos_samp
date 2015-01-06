@@ -13,7 +13,6 @@ Goal:
 - Bugless gameplay 
 
 TODO:
-- Death problem (no teleport)
 - Typos on gm
 - Account system save score
 - House system
