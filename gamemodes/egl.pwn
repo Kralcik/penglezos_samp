@@ -5566,7 +5566,7 @@ CMD:stats(playerid,params[])
         new ID=strval(params);
         if(AdminLevel[playerid]>1)
         {
-   			if(ID==playerid)return SendClientMessage(playerid,RED,"Bitch Please");
+   			if(ID==playerid)return SendClientMessage(playerid,RED,"Stop it please...");
         	if(IsPlayerConnectedEx(ID))
        		{
        		    if(IsMuted(playerid))return 1;
@@ -5677,7 +5677,7 @@ CMD:bank(playerid,params[])
 		if(BankID[playerid]==0)
 		{
 			SendClientMessage(playerid,GREY,"You need a bank account");
-			SendClientMessage(playerid,-1,"Use /registerbank to reigster a bank account");
+			SendClientMessage(playerid,-1,"Use /registerbank to register a bank account");
 		}
 		else if(BankID[playerid]>0)
 		{
