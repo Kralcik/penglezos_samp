@@ -2242,6 +2242,16 @@ public OnPlayerSpawn(playerid)
     TextDrawHideForPlayer(playerid, TDEditor_TD[6]);
     TextDrawHideForPlayer(playerid, TDEditor_TD[7]);
     TextDrawHideForPlayer(playerid, TDEditor_TD[8]);
+   	if(AdminLevel[playerid]>1)
+	{
+      SetPlayerColor(playerid, LRED);
+      SendClientMessage(playerid,LRED,"ACCOUNT STATUS: ADMIN");
+    }
+   	if(AdminLevel[playerid] == 0)
+	{
+      SetPlayerColor(playerid, SAMP);
+      SendClientMessage(playerid,SAMP,"ACCOUNT STATUS: REGULAR PLAYER");
+    }
 	if(Died[playerid]==1)
 	{
 	    Died[playerid]=0;
@@ -2751,10 +2761,6 @@ public OnPlayerText(playerid,text[])
    		SendClientMessage(playerid,LBLUE,str);
        	return 0;
 	}
-	if(AdminLevel[playerid]>1)
-	{
-      SetPlayerColor(playerid, LRED);
-    }
 	if(Reporting[playerid]==1)
 	{
 	    Reporting[playerid]=0;
