@@ -16,3 +16,5 @@ TODO:
 - Account system save score
 - House system
 
+Test server ip:
+- 192.95.29.206:7857
