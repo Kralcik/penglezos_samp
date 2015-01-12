@@ -17,4 +17,4 @@ TODO:
 - House system
 
 Test server ip:
-- 192.95.29.206:7857
+- 92.222.150.56:7857
