@@ -761,9 +761,10 @@ new PlayerAwards[MAX_PLAYERS][Awards];
 new Text3D:vehicle3Dtext[MAX_VEHICLES];
 new RPName[MAX_PLAYERS][MAX_PLAYER_NAME];
 new MarriedTo[MAX_PLAYERS][MAX_PLAYER_NAME];
-new Text:TDEditor_TD[10];
+new Text:TDEditor_TD[9];
 new pInfo[MAX_PLAYERS][PlayerInfo];
 new Text:ShadowsRandom;
+new Text:map;
 //==============================================================================
 main(){}
 //==============================================================================
@@ -904,14 +905,14 @@ public OnGameModeInit()
 	TextDrawSetProportional(ShadowsRandom,1);
 	TextDrawSetShadow(ShadowsRandom,1);
 	
-	Textdraw2 = TextDrawCreate(73.000000, 327.000000, "MAP");
-	TextDrawBackgroundColor(Textdraw2, 255);
-	TextDrawFont(Textdraw2, 2);
-	TextDrawLetterSize(Textdraw2, 0.400000, 1.000000);
-	TextDrawColor(Textdraw2, 0xFFFFFFFF);
-	TextDrawSetOutline(Textdraw2, 0);
-	TextDrawSetProportional(Textdraw2, 1);
-	TextDrawSetShadow(Textdraw2, 1);
+	map = TextDrawCreate(73.000000, 327.000000, "MAP");
+	TextDrawBackgroundColor(map, 255);
+	TextDrawFont(map, 2);
+	TextDrawLetterSize(map, 0.400000, 1.000000);
+	TextDrawColor(map, 0xFFFFFFFF);
+	TextDrawSetOutline(map, 0);
+	TextDrawSetProportional(map, 1);
+	TextDrawSetShadow(map, 1);
 //==============================================================================
 	CreateAtm(414.4580,2533.7800,16.5648,88.798);
 	CreateAtm(2159.2224,939.9501,10.8203,2.8198);
@@ -2262,7 +2263,7 @@ public OnPlayerSpawn(playerid)
     TextDrawHideForPlayer(playerid, TDEditor_TD[6]);
     TextDrawHideForPlayer(playerid, TDEditor_TD[7]);
     TextDrawHideForPlayer(playerid, TDEditor_TD[8]);
-    TextDrawShowForPlayer(playerid, TDEditor_TD[9]);
+    TextDrawShowForPlayer(playerid, map);
     TextDrawShowForPlayer(playerid, ShadowsRandom);
    	if(AdminLevel[playerid]>1)
 	{
