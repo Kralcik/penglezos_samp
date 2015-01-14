@@ -761,8 +761,9 @@ new PlayerAwards[MAX_PLAYERS][Awards];
 new Text3D:vehicle3Dtext[MAX_VEHICLES];
 new RPName[MAX_PLAYERS][MAX_PLAYER_NAME];
 new MarriedTo[MAX_PLAYERS][MAX_PLAYER_NAME];
-new Text:TDEditor_TD[9];
+new Text:TDEditor_TD[10];
 new pInfo[MAX_PLAYERS][PlayerInfo];
+new Text:ShadowsRandom;
 //==============================================================================
 main(){}
 //==============================================================================
@@ -774,8 +775,8 @@ public OnGameModeInit()
    	ManualVehicleEngineAndLights();
 	SetGameModeText("Egl Roleplay | Real Life");
 	globaltimer=SetTimer("Global",1300,true);
-    SetTimer("Messages", 900000, true); // 15 Minutes
-    
+	SetTimer("RandomMessage",10000,1);
+
 	TDEditor_TD[0] = TextDrawCreate(-27.500000, -50.625000, "box");
 	TextDrawLetterSize(TDEditor_TD[0], 0.000000, 18.599998);
 	TextDrawTextSize(TDEditor_TD[0], 699.500000, 0.000000);
@@ -892,6 +893,25 @@ public OnGameModeInit()
 	TextDrawFont(TDEditor_TD[8], 1);
 	TextDrawSetProportional(TDEditor_TD[8], 1);
 	TextDrawSetShadow(TDEditor_TD[8], 0);
+	
+	ShadowsRandom = TextDrawCreate(191 ,418,"Read and follow server rules by typing: /rules");
+	TextDrawAlignment(ShadowsRandom,0);
+	TextDrawBackgroundColor(ShadowsRandom,0x000000ff);
+	TextDrawFont(ShadowsRandom,2);
+	TextDrawLetterSize(ShadowsRandom,0.199999,0.899999);
+	TextDrawColor(ShadowsRandom,0xffffffff);
+	TextDrawSetOutline(ShadowsRandom,1);
+	TextDrawSetProportional(ShadowsRandom,1);
+	TextDrawSetShadow(ShadowsRandom,1);
+	
+	Textdraw2 = TextDrawCreate(73.000000, 327.000000, "MAP");
+	TextDrawBackgroundColor(Textdraw2, 255);
+	TextDrawFont(Textdraw2, 2);
+	TextDrawLetterSize(Textdraw2, 0.400000, 1.000000);
+	TextDrawColor(Textdraw2, 0xFFFFFFFF);
+	TextDrawSetOutline(Textdraw2, 0);
+	TextDrawSetProportional(Textdraw2, 1);
+	TextDrawSetShadow(Textdraw2, 1);
 //==============================================================================
 	CreateAtm(414.4580,2533.7800,16.5648,88.798);
 	CreateAtm(2159.2224,939.9501,10.8203,2.8198);
@@ -2205,7 +2225,7 @@ public OnPlayerConnect(playerid)
 	TextDrawLetterSize(sdisplay[playerid],0.4,1.5);
 	for(new i=1;i<OrgsCount+1;i++){for(new a=1;a<Organization[i][ZoneCreated]+1;a++)
 	{GangZoneShowForPlayer(playerid,Organization[i][OrgZones][a],Organization[i][ZoneColor][a]);}}
-	format(string,sizeof(string),"-{A9C4E4}%s{FFFFFF} has joined the server",PlayerName(playerid));
+	format(string,sizeof(string),"--{A9C4E4}%s{FFFFFF} has joined the server",PlayerName(playerid));
 	SendClientMessageToAll(-1,string);
 	format(string,40,"~g~<~w~Join~g~>~w~ %s",PlayerName(playerid));
 	ConnectTextdraw(string);
@@ -2242,6 +2262,8 @@ public OnPlayerSpawn(playerid)
     TextDrawHideForPlayer(playerid, TDEditor_TD[6]);
     TextDrawHideForPlayer(playerid, TDEditor_TD[7]);
     TextDrawHideForPlayer(playerid, TDEditor_TD[8]);
+    TextDrawShowForPlayer(playerid, TDEditor_TD[9]);
+    TextDrawShowForPlayer(playerid, ShadowsRandom);
    	if(AdminLevel[playerid]>1)
 	{
       SetPlayerColor(playerid, LRED);
@@ -2291,7 +2313,7 @@ public OnPlayerSpawn(playerid)
   		Skin[playerid]=GetPlayerSkin(playerid);
 	    GameTextForPlayer(playerid,"~g~+$1000",800,1);
 	    SendClientMessage(playerid,LRED,"Note: Use /cmds for server commands,/help for server info/help and");
-	    SendClientMessage(playerid,LRED,"/guide for a short tutorial/guide to the server. Enjoy your stay!");
+	    SendClientMessage(playerid,LRED,"/guide for a short tutorial/guide of the server. Enjoy your stay!");
 	}
 	ClearAnimations(playerid);
 	TextDrawShowForPlayer(playerid,Textdraw1);
@@ -2417,18 +2439,21 @@ public OnPlayerDeath(playerid,killerid,reason)
  	return 1;
 }
 //==============================================================================
-forward Messages();
-
-new Message[][] =
+forward RandomMessage();
+new RandomMessages[][] =
 {
-    	"[BOT]: If you need help press: /help",
-    	"[BOT]: Dont forget to read server rules: /rules",
-    	"[BOT]: Server commands: /cmds"
+    "Have you seen a hacker? /report",
+    "Need help? Type: /help or /pm an online admin",
+    "Cant find commands? press /cmds",
+    "Server website: www.server.com",
+    "Server version: x.y",
+    "Type: /guide for a short tutorial/guide of the server"
 };
 
-public Messages()
+public RandomMessage()
 {
-    	SendClientMessageToAll(LRED, Message[random(sizeof(Message))]);
+        TextDrawSetString(ShadowsRandom, RandomMessages[random(sizeof(RandomMessages))]);
+        return 1;
 }
 //==============================================================================
 public OnPlayerDisconnect(playerid,reason)
