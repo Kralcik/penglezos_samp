@@ -2420,7 +2420,9 @@ new RandomMessages[][] =
     "Cant find commands? press /cmds",
     "Server website: www.server.com",
     "Server version: x.y",
-    "Type: /guide for a short tutorial/guide of the server"
+    "Type: /guide for a short tutorial/guide of the server",
+    "Not sure about your account password? Type: /changepass",
+    "Stucked/bugged? Type /pm to an online admin to unstuck/unbug you!"
 };
 
 public RandomMessage()
