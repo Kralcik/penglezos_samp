@@ -2285,6 +2285,7 @@ public OnPlayerSpawn(playerid)
 		GivePlayerMoneyEx(playerid,1000);
   		Skin[playerid]=GetPlayerSkin(playerid);
 	    GameTextForPlayer(playerid,"~g~+$1000",800,1);
+	    GameTextForPlayer(playerid,"~w~Welcome!",800,0);
 	    SendClientMessage(playerid,LRED,"Note: Use /cmds for server commands,/help for server info/help and");
 	    SendClientMessage(playerid,LRED,"/guide for a short tutorial/guide of the server. Enjoy your stay!");
 	}
