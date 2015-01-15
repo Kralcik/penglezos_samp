@@ -810,37 +810,9 @@ public OnGameModeInit()
 	TextDrawSetShadow(TDEditor_TD[2], 0);
 	TextDrawSetOutline(TDEditor_TD[2], 1);
 	TextDrawBackgroundColor(TDEditor_TD[2], 255);
-	TextDrawFont(TDEditor_TD[2], 0);
+	TextDrawFont(TDEditor_TD[2], 3);
 	TextDrawSetProportional(TDEditor_TD[2], 1);
 	TextDrawSetShadow(TDEditor_TD[2], 0);
-
-	TDEditor_TD[3] = TextDrawCreate(452.000000, 16.312500, "");
-	TextDrawLetterSize(TDEditor_TD[3], 0.000000, 0.000000);
-	TextDrawTextSize(TDEditor_TD[3], 60.000000, 72.062500);
-	TextDrawAlignment(TDEditor_TD[3], 1);
-	TextDrawColor(TDEditor_TD[3], -1);
-	TextDrawSetShadow(TDEditor_TD[3], 0);
-	TextDrawSetOutline(TDEditor_TD[3], 0);
-	TextDrawBackgroundColor(TDEditor_TD[3], 0);
-	TextDrawFont(TDEditor_TD[3], 5);
-	TextDrawSetProportional(TDEditor_TD[3], 1);
-	TextDrawSetShadow(TDEditor_TD[3], 0);
-	TextDrawSetPreviewModel(TDEditor_TD[3], 170);
-	TextDrawSetPreviewRot(TDEditor_TD[3], 0.000000, 0.000000, -30.000000, 1.000000);
-
-	TDEditor_TD[4] = TextDrawCreate(419.500000, 18.062500, "");
-	TextDrawLetterSize(TDEditor_TD[4], 0.000000, 0.000000);
-	TextDrawTextSize(TDEditor_TD[4], 60.000000, 72.062500);
-	TextDrawAlignment(TDEditor_TD[4], 1);
-	TextDrawColor(TDEditor_TD[4], -1);
-	TextDrawSetShadow(TDEditor_TD[4], 0);
-	TextDrawSetOutline(TDEditor_TD[4], 0);
-	TextDrawBackgroundColor(TDEditor_TD[4], 0);
-	TextDrawFont(TDEditor_TD[4], 5);
-	TextDrawSetProportional(TDEditor_TD[4], 1);
-	TextDrawSetShadow(TDEditor_TD[4], 0);
-	TextDrawSetPreviewModel(TDEditor_TD[4], 161);
-	TextDrawSetPreviewRot(TDEditor_TD[4], 0.000000, 0.000000, 30.000000, 1.000000);
 
 	TDEditor_TD[5] = TextDrawCreate(-56.000000, 312.937500, "box");
 	TextDrawLetterSize(TDEditor_TD[5], 0.000000, 18.599998);
