@@ -4602,6 +4602,7 @@ public OnPlayerKeyStateChange(playerid,newkeys,oldkeys)
 			new engine,lights,alarm,doors,bonnet,boot,objective;
 			GetVehicleParamsEx(vehicleid,engine,lights,alarm,doors,bonnet,boot,objective);
 			if(lights==1) lights=0; else lights=1;
+			if (engine==1) engine=0; else engine=1;
 			SetVehicleParamsEx(vehicleid,engine,lights,alarm,doors,bonnet,boot,objective);
 			if(IsATowTruck(GetPlayerVehicleID(playerid)))
 			{
@@ -4743,8 +4744,8 @@ public OnPlayerStateChange(playerid,newstate,oldstate)
      		new vehicleid=GetPlayerVehicleID(playerid);
 			new engine,lights,alarm,doors,bonnet,boot,objective;
 			GetVehicleParamsEx(vehicleid,engine,lights,alarm,doors,bonnet,boot,objective);
-			if(engine !=1) {SendClientMessage(playerid,-1,"To switch on the vehicle's engine type: {FF8000}/engine"); SendClientMessage(playerid,-1,"To control your car type: {FFFF33}/car");}
-			if(engine==1) {SendClientMessage(playerid,-1,"To switch on the vehicle's engine type: {FF8000}/engine"); SendClientMessage(playerid,-1,"To control your car type: {FFFF33}/car");}
+			if(engine !=1) {SendClientMessage(playerid,-1,"To switch on the vehicle's engine type: {FF8000}/engine{FFFFFF} or press: {FF8000}Ctrl{FFFFFF} (control)button"); SendClientMessage(playerid,-1,"To control your car type: {FFFF33}/car");}
+			if(engine==1) {SendClientMessage(playerid,-1,"To switch on the vehicle's engine type: {FF8000}/engine{FFFFFF} or press: {FF8000}Ctrl{FFFFFF} (control)button"); SendClientMessage(playerid,-1,"To control your car type: {FFFF33}/car");}
   			{
 			  	TextDrawShowForPlayer(playerid,sdisplay[playerid]);
         		TextDrawShowForPlayer(playerid,td_fuel[playerid]);
