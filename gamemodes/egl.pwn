@@ -10397,6 +10397,7 @@ stock LoadStats(playerid)
 	PlayerAwards[playerid][Gangster]=INI_Int(Acc(playerid),"Award17");
 	PlayerAwards[playerid][AirPlane]=INI_Int(Acc(playerid),"Award18");
 	SetPlayerWantedLevel(playerid,INI_Int(Acc(playerid),"WantedLevel"));
+	SetPlayerScore(playerid,INI_Int(Acc(playerid),"Score"));
 	if(INI_Int(Acc(playerid),"Car")>0)
 	{
   		Car[playerid]=AddStaticVehicleEx(INI_Int(Acc(playerid),"Car"),INI_Int(Acc(playerid),"CarX"),INI_Int(Acc(playerid),"CarY"),INI_Int(Acc(playerid),"CarZ"),INI_Int(Acc(playerid),"CarR"),CarColor1[playerid],CarColor1[playerid],-1);
@@ -10509,6 +10510,7 @@ stock SStats(playerid)
 		INI_IntSet(Acc(playerid),"Award18",PlayerAwards[playerid][AirPlane]);
 		if(GetPlayerMoneyEx(playerid)<0){INI_IntSet(Acc(playerid),"Money",-1);}
 		INI_IntSet(Acc(playerid),"WantedLevel",GetPlayerWantedLevel(playerid));
+		INI_IntSet(Acc(playerid),"Score",GetPlayerScore(playerid));
 		if(Car[playerid]==0)
 		{
 			INI_IntSet(Acc(playerid),"C1",0);

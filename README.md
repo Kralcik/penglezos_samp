@@ -13,8 +13,7 @@ Goal:
 - Bugless gameplay 
 
 TODO:
-- Account system save score
-- House system
+- House(property) system
 
 Test server ip:
 - 92.222.150.56:7857
