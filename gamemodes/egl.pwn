@@ -679,7 +679,6 @@ new fuel[MAX_VEHICLES];
 new Alarm[MAX_PLAYERS];
 new rname[MAX_PLAYERS];
 new Business[200][Bus];
-new Lotto[MAX_PLAYERS];
 new Inter[MAX_PLAYERS];
 new rcash[MAX_PLAYERS];
 new Tazer[MAX_PLAYERS];
@@ -2627,7 +2626,7 @@ public OnPlayerEnterDynamicCP(playerid,checkpointid)
     }
  	if(checkpointid==Shop||checkpointid==Shop1||checkpointid==Shop2||checkpointid==Shop3||checkpointid==Shop4)
     {
-		ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200\nLottery Ticket $85","Buy","Close");
+		ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200","Buy","Close");
     }
     if(checkpointid==gym)
     {
@@ -3229,7 +3228,7 @@ public OnDialogResponse(playerid,dialogid,response,listitem,inputtext[])
         	   Keys[playerid]=1;
 			   SendClientMessage(playerid,YELLOW,"You've purchased Vehicle Keys");
 			   SendClientMessage(playerid,-1,"You can now use /(un)lock");
-			   ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200\nLottery Ticket $85","Buy","Close");
+			   ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200","Buy","Close");
 			}
 			case 1:
 			{
@@ -3240,7 +3239,7 @@ public OnDialogResponse(playerid,dialogid,response,listitem,inputtext[])
        			FuelCan[playerid]=1;
        			GameTextForPlayer(playerid,"~r~-$1000",1000,1);
 			   	SendClientMessage(playerid,YELLOW,"You've purchased a Fuelcan {FFFFFF}(/fuelcan)");
-			   	ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200\nLottery Ticket $85","Buy","Close");
+			   	ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200","Buy","Close");
 			}
 			case 2:
 			{
@@ -3249,7 +3248,7 @@ public OnDialogResponse(playerid,dialogid,response,listitem,inputtext[])
         	   	GivePlayerMoneyEx(playerid,-500);
        			GivePlayerWeaponEx(playerid,2,1);
 			   	SendClientMessage(playerid,YELLOW,"You've purchased a Golf Bat");
-			   	ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200\nLottery Ticket $850","Buy","Close");
+			   	ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $12000","Buy","Close");
 			}
 			case 3:
 			{
@@ -3259,7 +3258,7 @@ public OnDialogResponse(playerid,dialogid,response,listitem,inputtext[])
         	   	GivePlayerMoneyEx(playerid,-750);
        			GivePlayerWeaponEx(playerid,5,1);
 			   	SendClientMessage(playerid,YELLOW,"You've purchased a BaseBall Bat");
-				ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200\nLottery Ticket $85","Buy","Close");
+				ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200","Buy","Close");
 			}
 			case 4:
 			{
@@ -3270,7 +3269,7 @@ public OnDialogResponse(playerid,dialogid,response,listitem,inputtext[])
         	   	GivePlayerMoneyEx(playerid,-25);
        			Cigars[playerid]=Cigars[playerid]+5;
 			   	SendClientMessage(playerid,YELLOW,"You've purchased a Packet of Cigars");
-				ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200\nLottery Ticket $85","Buy","Close");
+				ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200","Buy","Close");
 			}
 			case 5:
 			{
@@ -3281,7 +3280,7 @@ public OnDialogResponse(playerid,dialogid,response,listitem,inputtext[])
         	   	GivePlayerMoneyEx(playerid,-250);
        			GivePlayerWeaponEx(playerid,43,50);
 			   	SendClientMessage(playerid,YELLOW,"You've purchased a Camera");
-				ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200\nLottery Ticket $85","Buy","Close");
+                ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200","Buy","Close");
 			}
 			case 6:
 			{
@@ -3291,7 +3290,7 @@ public OnDialogResponse(playerid,dialogid,response,listitem,inputtext[])
         	   	GivePlayerMoneyEx(playerid,-250);
        			GivePlayerWeaponEx(playerid,14,1);
 			   	SendClientMessage(playerid,YELLOW,"You've purchased Flowers");
-				ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200\nLottery Ticket $85","Buy","Close");
+				ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200","Buy","Close");
 			}
 			case 7:
 			{
@@ -3301,7 +3300,7 @@ public OnDialogResponse(playerid,dialogid,response,listitem,inputtext[])
         	   	GivePlayerMoneyEx(playerid,-500);
        			Bag[playerid]=1;
 			   	SendClientMessage(playerid,YELLOW,"You've purchased a Bag");
-				ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200\nLottery Ticket $85","Buy","Close");
+				ShowPlayerDialog(playerid,SHOP,DIALOG_STYLE_LIST,"24/7 Shop","Vehicle Keys $2400\nFuelcan $1000\nGolf Club $500\nBaseBall Bat $750\nCigarettes $25\nCamera $250\nFlowers $250\nBag $500\nCellphone $1200","Buy","Close");
 			}
 			case 8:
 			{
@@ -3313,18 +3312,6 @@ public OnDialogResponse(playerid,dialogid,response,listitem,inputtext[])
        			Cell[playerid]=randphone;
         	   	GivePlayerMoneyEx(playerid,-1200);
        			format(string,sizeof(string),"You've purchased a CellPhone,your cell number is {FFFF00}%d",randphone);
-				SendClientMessage(playerid,YELLOW,string);
-			}
-			case 9:
-			{
-				if(Lotto[playerid]>0)return SendClientMessage(playerid,GREY,"You cannot buy more than 1 Lottery Ticket");
-		   	 	if(GetPlayerMoneyEx(playerid) < 85) return SendClientMessage(playerid,GREY,"You don't have enough money on you");
-                if(Bag[playerid]==0)return SendClientMessage(playerid,GREY,"You need to buy the bag first");
-				GameTextForPlayer(playerid,"~r~-$85",1000,1);
-        	   	GivePlayerMoneyEx(playerid,-85);
-	   			new randlotto=70 + random(11),string[128];
-       			Lotto[playerid]=randlotto;
-        	   	format(string,sizeof(string),"You've purchased a Lottery Ticket,your number is {FFFF00}%d",randlotto);
 				SendClientMessage(playerid,YELLOW,string);
 			}
 		}
@@ -10205,7 +10192,6 @@ stock CStats(playerid)
 	Hours[playerid]=0;
 	Alarm[playerid]=0;
 	rname[playerid]=0;
-	Lotto[playerid]=0;
 	Inter[playerid]=0;
 	rcash[playerid]=0;
 	Tazer[playerid]=0;
@@ -10959,20 +10945,6 @@ stock Hour()
 				  	}
 				}
 		 	}
-			new randlotto=70+random(11);
-			if(randlotto==Lotto[i])
-			{
-			    Lotto[i]=0;
-				GivePlayerMoneyEx(i,5000);
-	            GameTextForPlayer(i,"~g~+$5000",1000,1);
-				format(string,sizeof(string),"Lottery: $5000",Lotto[i]);
-				SendClientMessage(i,-1,string);
-			}
-			if(Lotto[i]>0&&randlotto!=Lotto[i])
-			{
-				Lotto[i]=0;
-				GameTextForPlayer(i,"You did not win any lottery~n~better luck next time",4500,4);
-			}
 			format(string,sizeof(string),"Your New Balance : $%d",Bank[i]);
 			SendClientMessage(i,-1,string);
 			SendClientMessage(i,YELLOW,"$$$==================$$$");
