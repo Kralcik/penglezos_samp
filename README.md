@@ -1,5 +1,6 @@
 Panagiotisegl_samp
 ==================
+SAMP Version: 0.3.7 [Stable]
 
 Panagiotisegl SAMP Development is a truly open source (free) samp platform that you can work on! Collecting useful codes and fixes,and creating new ones!
 Join our community , its truly free!
@@ -15,5 +16,3 @@ Goal:
 TODO:
 - House(property) system
 
-Test server ip:
-- 92.222.150.56:7857
