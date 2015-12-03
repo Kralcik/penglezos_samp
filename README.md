@@ -1,8 +1,8 @@
-Panagiotisegl_samp
+Penglezos_samp
 ==================
 SAMP Version: 0.3.7 [Stable]
 
-Panagiotisegl SAMP Development is a truly open source (free) samp platform that you can work on! Collecting useful codes and fixes,and creating new ones!
+Penglezos SAMP Development is a truly open source (free) samp platform that you can work on! Collecting useful codes and fixes,and creating new ones!
 Join our community , its truly free!
 
 Implemented features:

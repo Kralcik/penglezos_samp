@@ -1,5 +1,5 @@
 // Anti-Cheat Guard
-// Coded by: panagiotisegl
+// Coded by: penglezos
 // Cheats protected: jetpack,armor,ping,swear,advertisment
 // Version: 2.0
 
@@ -138,7 +138,7 @@ new LastArmour[MAX_PLAYERS];
 public OnFilterScriptInit()
 {
 	print("\n------------------------------------------------------");
-	print(" Anti-Cheat Guard by panagiotisegl                      ");
+	print(" Anti-Cheat Guard by penglezos                          ");
 	print("------------------------------------------------------\n");
 }
 

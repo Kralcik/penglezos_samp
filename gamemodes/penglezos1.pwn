@@ -1,6 +1,6 @@
-// egl gamemode script
+// Penglezos gamemode script
 // Coded by: LaGrande
-// Reworked by: panagiotisegl
+// Reworked by: penglezos
 
 //==============================================================================
 //INCLUDES
@@ -773,7 +773,7 @@ public OnGameModeInit()
     ShowPlayerMarkers(1);
     EnableStuntBonusForAll(0);
    	ManualVehicleEngineAndLights();
-	SetGameModeText("Egl Roleplay | Real Life");
+	SetGameModeText("Penglezos Roleplay | Real Life");
 	globaltimer=SetTimer("Global",1300,true);
 	SetTimer("RandomMessage",10000,1);
 
@@ -791,7 +791,7 @@ public OnGameModeInit()
 	TextDrawSetProportional(TDEditor_TD[0], 1);
 	TextDrawSetShadow(TDEditor_TD[0], 0);
 
-	TDEditor_TD[1] = TextDrawCreate(193.000000, 39.062500, "Egl");
+	TDEditor_TD[1] = TextDrawCreate(193.000000, 39.062500, "Penglezos");
 	TextDrawLetterSize(TDEditor_TD[1], 0.865500, 3.332499);
 	TextDrawAlignment(TDEditor_TD[1], 1);
 	TextDrawColor(TDEditor_TD[1], -1);
@@ -855,7 +855,7 @@ public OnGameModeInit()
 	TextDrawSetProportional(TDEditor_TD[7], 1);
 	TextDrawSetShadow(TDEditor_TD[7], 0);
 
-	TDEditor_TD[8] = TextDrawCreate(8.000000, 427.562500, "www.panagiotisegl.com");
+	TDEditor_TD[8] = TextDrawCreate(8.000000, 427.562500, "www.penglezos.com");
 	TextDrawLetterSize(TDEditor_TD[8], 0.287499, 1.315625);
 	TextDrawAlignment(TDEditor_TD[8], 1);
 	TextDrawColor(TDEditor_TD[8], -1);
@@ -2162,9 +2162,9 @@ public OnGameModeInit()
 	CreateOrgVehicle("Ninkyo Dantai",602,-1703.4086,999.4642,17.3864,89.9342,0,0);
 //==============================================================================
 	print("\n--------------------------------------");
-	print(" Egl Roleplay | Real Life Gamemode Script     ");
+	print(" Penglezos Roleplay | Real Life Gamemode Script     ");
 	print(" Coded by: LaGrande                     ");
-	print(" Reworked by: panagiotisegl                 ");
+	print(" Reworked by: penglezos                 ");
 	print("--------------------------------------\n");
 	for(new i=0; i<MAX_VEHICLES; i++){OnVehicleSpawn(i);}
 	printf("Total Businesses Loaded: %i",BusinessCount);

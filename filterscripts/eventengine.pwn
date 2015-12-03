@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////
 // Event engine
-// Coded by panagiotisegl
+// Coded by penglezos
 // Events loaded: 6 :
 // One Shot DM
 // Quiz Event
@@ -48,7 +48,7 @@ public RemovePlayerFromODM(playerid)
 public OnFilterScriptInit()
 {
 	print("\n------------------------------------------------------");
-	print(" Event Engine by panagiotisegl                          ");
+	print(" Event Engine by penglezos                              ");
 	print("------------------------------------------------------\n");
 	
     SetTimer("mathQuiz",200000, true); // Quiz Event Timer
